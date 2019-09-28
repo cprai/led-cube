@@ -12,6 +12,9 @@ public:
     Vector3 scale;
 
     Mesh& mesh;
+
+    Entity(Vector3 position, Vector3 rotation, Vector3 scale, Mesh& mesh)
+    : position(position), rotation(rotation), scale(scale), mesh(mesh) { }
 };
 
 
