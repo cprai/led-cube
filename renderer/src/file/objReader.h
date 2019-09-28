@@ -12,10 +12,10 @@ namespace renderer {
 
 class OBJReader {
 public:
-    OBJReader(std::string path, Mesh& mesh) : file(path, std::ios_base::in), mesh(mesh) { parseFile(); }
+    OBJReader(std::ifstream& file, Mesh& mesh) : file(file), mesh(mesh) { parseFile(); }
 
 private:
-    std::ifstream file;
+    std::ifstream& file;
     Mesh& mesh;
 
     enum LineType{
@@ -28,8 +28,6 @@ private:
         for (std::string line; std::getline(file, line); ) {
             parseLine(line);
         }
-
-        file.close();
     }
 
     LineType getLineType(const std::string& line) {
