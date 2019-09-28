@@ -11,7 +11,7 @@ class Mesh {
 public:
     std::vector<Vertex> vertices;
     std::vector<Triangle> triangles;
-}
+};
 
 
 }
