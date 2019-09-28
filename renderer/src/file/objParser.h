@@ -10,9 +10,9 @@
 namespace renderer {
 
 
-class OBJReader {
+class OBJParser {
 public:
-    OBJReader(std::ifstream& file, Mesh& mesh) : file(file), mesh(mesh) { parseFile(); }
+    OBJParser(std::ifstream& file, Mesh& mesh) : file(file), mesh(mesh) { parseFile(); }
 
 private:
     std::ifstream& file;
