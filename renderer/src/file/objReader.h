@@ -87,6 +87,7 @@ private:
             return;
         }
 
+        // Ignore w component if it exists
         float x = std::stof(tokens[1]);
         float y = std::stof(tokens[2]);
         float z = std::stof(tokens[3]);
