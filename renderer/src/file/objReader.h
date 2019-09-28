@@ -5,21 +5,18 @@
 #include <string>
 #include <vector>
 
-#include "geometry/vertex.h"
-#include "geometry/triangle.h"
+#include "renderer/mesh.h"
 
 namespace renderer {
 
 
 class OBJReader {
 public:
-    OBJReader(std::string path, std::vector<Vertex>& vertices, std::vector<Triangle>& triangles)
-    : file(path, std::ios_base::in), vertices(vertices), triangles(triangles) { parseFile(); }
+    OBJReader(std::string path, Mesh& mesh) : file(path, std::ios_base::in), mesh(mesh) { parseFile(); }
 
 private:
     std::ifstream file;
-    std::vector<Vertex>& vertices;
-    std::vector<Triangle>& triangles;
+    Mesh& mesh;
 
     enum LineType{
         VERTEX,
@@ -92,7 +89,7 @@ private:
         float y = std::stof(tokens[2]);
         float z = std::stof(tokens[3]);
 
-        vertices.push_back({x, y, z});
+        mesh.vertices.push_back({x, y, z});
     }
 
     void parseFace(const std::string& line) {
@@ -111,11 +108,11 @@ private:
 
         // Negative index means to start from the back of current face array
         // Fix to be proper index from start of array
-        if (v1 < 0) v1 += vertices.size();
-        if (v2 < 0) v2 += vertices.size();
-        if (v3 < 0) v3 += vertices.size();
+        if (v1 < 0) v1 += mesh.vertices.size();
+        if (v2 < 0) v2 += mesh.vertices.size();
+        if (v3 < 0) v3 += mesh.vertices.size();
 
-        triangles.push_back({v1, v2, v3});
+        mesh.triangles.push_back({v1, v2, v3});
     }
 
 };
