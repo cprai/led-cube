@@ -12,7 +12,7 @@ using namespace renderer;
 int main() {
     renderer::Renderer renderer;
     //renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {1, 0, 0}, {4, 4, 1}, renderer.loadMesh("simple.obj"));
-    renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {0, 0, 3.14}, {1, 1, 1}, renderer.loadMesh("teapot.obj"));
+    renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {0, 0, 3.14}, {1, 1, 1}, renderer.loadMesh("resources/teapot.obj"));
     //teapot.position.x += 3;
 
     //Vector3 samplePoints[1] = {{2.5, 1, 0}};
