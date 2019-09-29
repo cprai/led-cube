@@ -3,11 +3,20 @@
 #include <cmath>
 #include <cstring>
 
+#include <iostream>
+
 namespace renderer {
 
 // Using 3D homogenous coordinates
 class Transformation {
 public:
+    void print() {
+        std::cout << "|" << mx[0][0] << " " << mx[0][1] << " " << mx[0][2] << " " << mx[0][3] << "|" << std::endl;
+        std::cout << "|" << mx[1][0] << " " << mx[1][1] << " " << mx[1][2] << " " << mx[1][3] << "|" << std::endl;
+        std::cout << "|" << mx[2][0] << " " << mx[2][1] << " " << mx[2][2] << " " << mx[2][3] << "|" << std::endl;
+        std::cout << "|" << mx[3][0] << " " << mx[3][1] << " " << mx[3][2] << " " << mx[3][3] << "|" << std::endl;
+    }
+
     void transform(Vertex vertices[], int numberOfVertices) {
         for (int i = 0; i < numberOfVertices; i++) {
             float u1 = vertices[i].x;
