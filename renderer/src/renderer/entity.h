@@ -1,5 +1,6 @@
 #pragma once
 
+#include "geometry/transformation.h"
 #include "geometry/vector3.h"
 #include "renderer/mesh.h"
 
@@ -15,6 +16,16 @@ public:
 
     Entity(Vector3 position, Vector3 rotation, Vector3 scale, Mesh& mesh)
     : position(position), rotation(rotation), scale(scale), mesh(mesh) { }
+
+    Transformation getVertexTransformationMatrix() {
+        return Transformation::identity()
+            .rightMultiply(Transformation::rotateX(rotation.x))
+            .rightMultiply(Transformation::rotateY(rotation.y))
+            .rightMultiply(Transformation::rotateZ(rotation.z))
+            .rightMultiply(Transformation::scale(scale.x, scale.y, scale.z))
+            .rightMultiply(Transformation::translate(position.x, position.y, position.z))
+            .inverse();
+    }
 };
 
 
