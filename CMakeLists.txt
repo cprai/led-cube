@@ -15,5 +15,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
-add_subdirectory(renderer)
 add_subdirectory(applications)
+add_subdirectory(displayer)
+add_subdirectory(renderer)

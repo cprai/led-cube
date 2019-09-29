@@ -1,5 +1,6 @@
 #include "geometry/vector3.h"
 #include "renderer/renderer.h"
+#include "displayer/displayer.h"
 
 #include <iostream>
 #include <iomanip>
@@ -11,6 +12,8 @@ using namespace renderer;
 
 int main() {
     renderer::Renderer renderer;
+    displayer::Displayer displayer;
+    displayer.display();
     //renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {1, 0, 0}, {4, 4, 1}, renderer.loadMesh("simple.obj"));
     renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {0, 0, 3.14}, {1, 1, 1}, renderer.loadMesh("resources/teapot.obj"));
     //teapot.position.x += 3;
