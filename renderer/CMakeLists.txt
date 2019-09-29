@@ -10,4 +10,4 @@ target_sources(renderer INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/mesh.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/renderer.h
 )
-target_include_directories(renderer INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+target_include_directories(renderer INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
