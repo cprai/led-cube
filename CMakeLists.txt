@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS_DEBUG
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(renderer)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
-add_executable(main main.cpp)
-target_link_libraries(main renderer)
+add_subdirectory(renderer)
+add_subdirectory(applications)
