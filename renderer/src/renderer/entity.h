@@ -19,12 +19,12 @@ public:
 
     Transformation getVertexTransformationMatrix() {
         return Transformation::identity()
-            .rightMultiply(Transformation::rotateX(rotation.x))
-            .rightMultiply(Transformation::rotateY(rotation.y))
-            .rightMultiply(Transformation::rotateZ(rotation.z))
-            .rightMultiply(Transformation::scale(scale.x, scale.y, scale.z))
             .rightMultiply(Transformation::translate(position.x, position.y, position.z))
-            .inverse();
+            .rightMultiply(Transformation::scale(scale.x, scale.y, scale.z))
+            .rightMultiply(Transformation::rotateZ(rotation.z))
+            .rightMultiply(Transformation::rotateY(rotation.y))
+            .rightMultiply(Transformation::rotateX(rotation.x))
+        ;
     }
 };
 
