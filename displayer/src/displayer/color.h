@@ -9,8 +9,8 @@ public:
     float g;
     float b;
 
-    Vector3() : x(0.0f), y(0.0f), z(0.0f) { }
-    Vector3(float r, float g, float b) : r(r), g(g), b(b) { }
+    Color() : r(0.0f), g(0.0f), b(0.0f) { }
+    Color(float r, float g, float b) : r(r), g(g), b(b) { }
 
 };
 
