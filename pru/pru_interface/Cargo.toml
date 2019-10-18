@@ -1,0 +1,13 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+authors = ["misha"]
+edition = "2018"
+
+[dependencies]
+prusst = "1.0.0"
+libc = "0.2.64"
+
+[lib]
+name = "pru_module"
+path = "src/pru_module.rs"
