@@ -1,5 +1,5 @@
 [package]
-name = "hello_world"
+name = "pru_module"
 version = "0.1.0"
 authors = ["misha"]
 edition = "2018"
@@ -10,4 +10,5 @@ libc = "0.2.64"
 
 [lib]
 name = "pru_module"
+crate-type = ["dylib"]
 path = "src/pru_module.rs"

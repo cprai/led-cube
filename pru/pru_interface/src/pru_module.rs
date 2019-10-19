@@ -4,6 +4,7 @@ use std::fs::File;
 use std::path::PathBuf;
 use std::slice;
 use::prusst::{Pruss,IntcConfig, Sysevt};
+use std::mem;
 
 pub struct PruModule<'a>{
     pru: Pruss<'a>,
@@ -16,13 +17,24 @@ impl<'a> PruModule<'a>{
         let mut pru = Pruss::new(&IntcConfig::new_populated()).unwrap();
         // read binary file; 
         let mut file = File::open(PathBuf::from("./pru_binary.bin")).unwrap();
+        
 
-        let led_data = vec![0x00000000; num_leds as usize]; 
-        let leds = &led_data[0..];
+        // let led_data = vec![0x00ffffff; num_leds as usize]; 
+        // let leds:[u32;7]=[0xffffffff;7];
+        // pru.dram2.alloc(leds);
+        let leds1:[u32;7] = [0x00000001,0x00000010,0x00000100,0x00001000,0x00010000,0x00100000,0x00ffffff];
+        let leds2:[u32;1024] = [0x00000000;1024];
 
-        pru.dram0.alloc(leds);
-        pru.dram2.alloc(leds);
-        pru.hostram.alloc(leds);
+        // pru.dram0.alloc(leds);
+        let mut segments = pru.dram0.split_at(mem::size_of::<[u32;7]>());
+        segments.0.alloc(leds1);
+        segments.1.alloc(leds2);
+        let begin = segments.1.begin();
+        let end = segments.1.end();
+        println!("begin at {} and end at {}", begin, end);
+
+
+        // pru.hostram.alloc(leds);
 
         unsafe {pru.pru0.load_code(&mut file).unwrap().run();}
 
