@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <iostream>
 
 #include "displayer/color.h"
@@ -23,9 +24,16 @@ public:
         std::cout << "Call to display module" << std::endl;
 
         std::cout << "Recieved output buffer:" << std::endl;
+
+        uint32_t interfaceBuffer[LEDCount];
+        
         for (int i = 0; i < LEDCount; i++) {
-            std::cout << "{" << outputBuffer[i].r << "," << outputBuffer[i].g << "," << outputBuffer[i].b << "}" << std::endl;
+            interfaceBuffer[i] = outputBuffer[i].asU32();
+
+            std::cout << std::hex << interfaceBuffer[i] << std::endl;
         }
+
+        pru_module_update(pru_module, interfaceBuffer);
     }
 
 private:
