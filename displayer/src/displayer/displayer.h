@@ -4,8 +4,6 @@
 
 #include "displayer/color.h"
 
-extern "C" char* hello_rust(void);
-
 namespace displayer {
 
 
@@ -21,8 +19,6 @@ public:
         for (int i = 0; i < LEDCount; i++) {
             std::cout << "{" << outputBuffer[i].r << "," << outputBuffer[i].g << "," << outputBuffer[i].b << "}" << std::endl;
         }
-
-        std::cout << "From rust code: " << hello_rust() << std::endl;
     }
 };
 
