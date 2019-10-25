@@ -3,13 +3,20 @@
 #include <iostream>
 
 #include "displayer/color.h"
+#include "interface/pru_module.h"
 
 namespace displayer {
 
 
 class Displayer {
 public:
-    Displayer() { }
+    Displayer() {
+        pru_module = pru_module_new(32);
+    }
+
+    ~Displayer() {
+        pru_module_shutdown(pru_module);
+    }
 
     template<int LEDCount>
     void display(Color outputBuffer[LEDCount]) {
@@ -20,6 +27,10 @@ public:
             std::cout << "{" << outputBuffer[i].r << "," << outputBuffer[i].g << "," << outputBuffer[i].b << "}" << std::endl;
         }
     }
+
+private:
+    pru_module_t* pru_module;
+
 };
 
 
