@@ -10,7 +10,7 @@ int main() {
 
     renderer::Vector3 outputBuffer[N];
     for (int i = 0; i < N; i += 2) {
-        outputBuffer[i] = {1.0f, 0.0f, 0.0f};
+        outputBuffer[i] = {1.0f, 0.1f, 0.5f};
     }
 
     std::cout << "Output buffer:" << std::endl;
