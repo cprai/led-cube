@@ -8,17 +8,17 @@
 namespace displayer {
 
 
+template<int LEDCount>
 class Displayer {
 public:
     Displayer() {
-        pru_module = pru_module_new(32);
+        pru_module = pru_module_new(LEDCount);
     }
 
     ~Displayer() {
         pru_module_shutdown(pru_module);
     }
 
-    template<int LEDCount>
     void display(Color outputBuffer[LEDCount]) {
         std::cout << "Call to display module" << std::endl;
 

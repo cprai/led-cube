@@ -6,7 +6,7 @@
 #define N 5
 
 int main() {
-    displayer::Displayer displayer;
+    displayer::Displayer<N> displayer;
 
     renderer::Vector3 outputBuffer[N];
     for (int i = 0; i < N; i += 2) {
@@ -18,5 +18,5 @@ int main() {
         std::cout << "{" << outputBuffer[i].x << "," << outputBuffer[i].y << "," << outputBuffer[i].z << "}" << std::endl;
     }
 
-    displayer.display<N>((displayer::Color*)outputBuffer);
+    displayer.display((displayer::Color*)outputBuffer);
 }
