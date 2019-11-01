@@ -3,7 +3,7 @@
 #include "geometry/vector3.h"
 #include "displayer/displayer.h"
 
-#define N 5
+#define N 6
 
 int main() {
     displayer::Displayer<N> displayer;
