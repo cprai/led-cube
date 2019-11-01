@@ -10,5 +10,5 @@ libc = "0.2.64"
 
 [lib]
 name = "pru_module"
-crate-type = ["cdylib"]
+crate-type = ["staticlib"]
 path = "src/pru_module.rs"

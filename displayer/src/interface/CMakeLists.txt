@@ -1,5 +1,5 @@
 set(RUST_INPUT pru_module.rs)
-set(RUST_OUTPUT libpru_module.so)
+set(RUST_OUTPUT libpru_module.a)
 
 EXECUTE_PROCESS(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
