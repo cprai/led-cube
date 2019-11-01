@@ -67,7 +67,7 @@ pub extern "C" fn pru_module_new(num_leds:c_uint) -> *mut PruModule<'static>{
 pub extern "C" fn pru_module_update(ptr: *mut PruModule,new_data: *const c_uint ){
     let module = unsafe{ &mut *ptr};
     let new_led_data: &[c_uint] = unsafe{slice::from_raw_parts(new_data, module.num_leds as usize)};
-    module.update(new_led_data);
+    //module.update(new_led_data);
 }
 
 #[no_mangle]
