@@ -14,13 +14,25 @@ public:
     Vector3() : x(0.0f), y(0.0f), z(0.0f) { }
     Vector3(float x, float y, float z) : x(x), y(y), z(z) { }
 
+    Vector3 operator+(Vector3 other) {
+        return {x + other.x, y + other.y, z + other.z};
+    }
+
     Vector3 operator-(Vector3 other) {
         return {x - other.x, y - other.y, z - other.z};
     }
 
+    Vector3 operator*(float scalar) {
+        return {x*scalar, y*scalar, z*scalar};
+    }
+
     Vector3 normalized() {
-        float magnitude = std::sqrt(x*x + y*y + z*z);
-        return {x/magnitude, y/magnitude, z/magnitude};
+        float mag = magnitude();
+        return {x/mag, y/mag, z/mag};
+    }
+
+    float magnitude() {
+        return std::sqrt(x*x + y*y + z*z);
     }
 
     static float dot(Vector3 a, Vector3 b) {

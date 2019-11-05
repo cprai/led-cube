@@ -45,47 +45,61 @@ public:
 
     template<int SamplePointCount>
     void renderTriangle(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 samplePoints[SamplePointCount], Vector3 outputBuffer[SamplePointCount]) {
-        //std::cout << " {" << v1.x << "," << v1.y << "," << v1.z << "}";
-        //std::cout << " {" << v2.x << "," << v2.y << "," << v2.z << "}";
-        //std::cout << " {" << v3.x << "," << v3.y << "," << v3.z << "}";
-        //std::cout << std::endl;
+        // ============================================ Error deal with degenerate triangles
+        float v13dist = (v3 - v1).magnitude();
+        float v23dist = (v3 - v2).magnitude();
+        float v13prog = 0;
+        float v23prog = 0;
+        Vector3 v13step = (v3 - v1).normalized()*0.25;
+        Vector3 v23step = (v3 - v2).normalized()*0.25;
+        for (Vector3 v13ptr = v1, v23ptr = v2; ; v13ptr = v13ptr + v13step, v23ptr = v23ptr + v23step, v13prog += 0.25, v23prog += 0.25) {
+            if (v13prog > v13dist) {
+                v13ptr = v3;
+                v13prog = v13dist;
+            }
+            if (v23prog > v23dist) {
+                v23ptr = v3;
+                v23prog = v23dist;
+            }
 
-        Vector3 point = v1;
-        Vector3 vx = (v2 - v1);
-        Vector3 vy = (v3 - v1);
-        Vector3 normal = Vector3::cross(vx, vy).normalized();
+            float vlrdist = (v23ptr - v13ptr).magnitude();
+            float vlrprog = 0;
+            Vector3 vlrstep = (v23ptr - v13ptr).normalized()*0.25;
+            for (Vector3 vlrptr = v13ptr; ; vlrptr = vlrptr + vlrstep, vlrprog += 0.25) {
+                if (vlrprog > vlrdist) {
+                    vlrptr = v23ptr;
+                    vlrprog = vlrdist;
+                }
 
-        //std::cout << "normal {" << normal.x << "," << normal.y << "," << normal.z << "}";
-        //std::cout << " vx {" << vx.x << "," << vx.y << "," << vx.z << "}";
-        //std::cout << " vy {" << vy.x << "," << vy.y << "," << vy.z << "}";
-        //std::cout << std::endl;
+                for (int i = 0; i < SamplePointCount; i++) {
+                    float distance = (samplePoints[i] - vlrptr).magnitude();
 
-        Matrix3D cob = Matrix3D::changeOfBasis(vx, vy, normal);
+                    // brightness = 1 if distance < rangeNear
+                    // brightness = [0, 1] if distance < rangeFar
+                    float rangeNear = 1.1;
+                    float rangeFar = 1.5;
 
-        for (int i = 0; i < SamplePointCount; i++) {
-            Vector3& samplePoint = samplePoints[i];
-            Vector3& outputColor = outputBuffer[i];
+                    float brightness = 0;
+                    if (distance <= rangeNear) {
+                        brightness = 1;
+                    }
+                    else if (distance <= rangeFar) {
+                        brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
+                    }
 
-            Vector3 p = samplePoint - point;
-            Vector3 np = cob.transform(p);
-            
-            //std::cout << "np {" << np.x << "," << np.y << "," << np.z << "}" << std::endl;
+                    if (outputBuffer[i].x < brightness) outputBuffer[i].x = brightness;
+                    if (outputBuffer[i].y < brightness) outputBuffer[i].y = brightness;
+                    if (outputBuffer[i].z < brightness) outputBuffer[i].z = brightness;
+                }
 
-            float distance = std::abs(np.z);
+                if (vlrprog == vlrdist) {
+                    break;
+                }
+            }
 
-            float range = 0.1f;
-            if (distance > range) continue;
-
-            if (np.x < -0.25) continue;
-            if (np.y < -0.25) continue;
-
-            if (np.x + np.y > 1.25) continue;
-
-            //std::cout << "sp {" << samplePoint.x << "," << samplePoint.y << "} " << distance << std::endl;
-
-            float close = 1.0f - distance/range;
-            if (outputColor.x > close) continue;
-            outputColor = {close, close, close};
+            if (v13prog == v13dist && v23prog == v23dist) {
+                break;
+            }
         }
     }
 
