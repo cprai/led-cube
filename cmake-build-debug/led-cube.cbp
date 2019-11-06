@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="led-cube"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\applications\;CMake Files\applications\led-testing\;CMake Files\applications\slice\;CMake Files\displayer\;CMake Files\displayer\src\;CMake Files\displayer\src\displayer\;CMake Files\renderer\;CMake Files\renderer\src\;CMake Files\renderer\src\file\;CMake Files\renderer\src\geometry\;CMake Files\renderer\src\renderer\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="led-testing">
+				<Option output="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/led-testing/led-testing" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/led-testing"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/www/classes/433/work/project/led-cube/displayer/src"/>
+					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 led-testing"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="led-testing/fast">
+				<Option output="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/led-testing/led-testing" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/led-testing"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/www/classes/433/work/project/led-cube/displayer/src"/>
+					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 led-testing/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="slice">
+				<Option output="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/slice/slice" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/slice"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 slice"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="slice/fast">
+				<Option output="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/slice/slice" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/www/classes/433/work/project/led-cube/cmake-build-debug/bin/applications/slice"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 slice/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/www/classes/433/work/project/led-cube/applications/led-testing/main.cpp">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/applications/slice/main.cpp">
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/include/pruss_intc_mapping.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/include/prussdrv.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/color.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/displayer.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.c">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/pru.c">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/pru.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/util.c">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/util.h">
+			<Option target="led-testing"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/file/objParser.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/matrix3D.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/transformation.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/triangle.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/vector3.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/vertex.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/entity.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/mesh.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/renderer.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/applications/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\applications\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/applications/led-testing/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\applications\led-testing\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/applications/slice/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\applications\slice\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\displayer\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\displayer\src\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\displayer\src\displayer\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\renderer\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\renderer\src\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/file/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\renderer\src\file\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\renderer\src\geometry\"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\renderer\src\renderer\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

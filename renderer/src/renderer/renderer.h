@@ -76,8 +76,8 @@ public:
 
                     // brightness = 1 if distance < rangeNear
                     // brightness = [0, 1] if distance < rangeFar
-                    float rangeNear = 1.1;
-                    float rangeFar = 1.5;
+                    float rangeNear = 0.1;
+                    float rangeFar = 0.5;
 
                     float brightness = 0;
                     if (distance <= rangeNear) {
@@ -88,8 +88,8 @@ public:
                     }
 
                     if (outputBuffer[i].x < brightness) outputBuffer[i].x = brightness;
-                    if (outputBuffer[i].y < brightness) outputBuffer[i].y = brightness;
-                    if (outputBuffer[i].z < brightness) outputBuffer[i].z = brightness;
+                    if (outputBuffer[i].y < brightness) outputBuffer[i].y = 0;
+                    if (outputBuffer[i].z < brightness) outputBuffer[i].z = 0;
                 }
 
                 if (vlrprog == vlrdist) {

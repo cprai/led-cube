@@ -1,0 +1,1 @@
+arm-linux-gnueabihf-g++   -Wall -O3 -fno-rtti -O0 -g -fno-omit-frame-pointer   CMakeFiles/slice.dir/main.cpp.o  -o ../../bin/applications/slice/slice 
