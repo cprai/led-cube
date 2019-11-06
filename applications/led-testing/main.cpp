@@ -148,8 +148,12 @@ int main() {
   displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
-  renderer::Entity &teapot = renderer.createEntity({3, 2, 2}, {0, 0, 0}, {1, 1, 1},
+  renderer::Entity &teapot = renderer.createEntity({3, 3, 2}, {0, 0, 0}, {1, 1, 1},
                                                    renderer.loadMesh("resources/teapot.obj"));
+
+//  for (int i = 0; i < N; ++i) {
+//    printf("Sample point %d: %lf, %lf, %lf\n", i, samplePoints[i].x, samplePoints[i].y, samplePoints[i].z);
+//  }
 //  int i = 0;
   while(1) {
     renderer::Vector3 outputBuffer[294];
