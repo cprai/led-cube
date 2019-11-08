@@ -31,8 +31,12 @@ public:
         return {x/mag, y/mag, z/mag};
     }
 
+    float squaredMagnitude() {
+        return x*x + y*y + z*z;
+    }
+
     float magnitude() {
-        return std::sqrt(x*x + y*y + z*z);
+        return std::sqrt(squaredMagnitude());
     }
 
     static float dot(Vector3 a, Vector3 b) {
