@@ -2,7 +2,7 @@
 
 #include "geometry/transformation.h"
 #include "geometry/vector3.h"
-#include "renderer/mesh.h"
+#include "renderer/pointCloud.h"
 
 namespace renderer {
 
@@ -12,9 +12,9 @@ public:
     Vector3 rotation;
     Vector3 scale;
 
-    Mesh& mesh;
+    PointCloud& mesh;
 
-    Entity(Vector3 position, Vector3 rotation, Vector3 scale, Mesh& mesh)
+    Entity(Vector3 position, Vector3 rotation, Vector3 scale, PointCloud& mesh)
     : position(position), rotation(rotation), scale(scale), mesh(mesh) { }
 
     Transformation getVertexTransformationMatrix() {
