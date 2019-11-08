@@ -23,6 +23,7 @@ public:
         }
         else if (remainingSteps == 1) {
             currentVector = endVector;
+            remainingSteps = 0;
         }
         else {
             currentVector = currentVector + stepVector;
