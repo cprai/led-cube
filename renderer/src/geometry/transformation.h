@@ -3,6 +3,8 @@
 #include <cmath>
 #include <cstring>
 
+#include "geometry/vector3.h"
+
 #include <iostream>
 
 namespace renderer {
@@ -17,7 +19,7 @@ public:
         std::cout << "|" << mx[3][0] << " " << mx[3][1] << " " << mx[3][2] << " " << mx[3][3] << "|" << std::endl;
     }
 
-    void transform(Vertex vertices[], int numberOfVertices) {
+    void transform(Vector3 vertices[], int numberOfVertices) {
         for (int i = 0; i < numberOfVertices; i++) {
             float u1 = vertices[i].x;
             float u2 = vertices[i].y;
