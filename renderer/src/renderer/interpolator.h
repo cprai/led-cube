@@ -17,7 +17,7 @@ public:
         return currentVector;
     }
 
-    Vector3 step() {
+    void step() {
         if (remainingSteps == 0) {
             return;
         }
