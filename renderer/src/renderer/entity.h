@@ -1,5 +1,7 @@
 #pragma once
 
+#include "displayer/color.h"
+
 #include "geometry/transformation.h"
 #include "geometry/vector3.h"
 #include "renderer/pointCloud.h"
@@ -12,10 +14,12 @@ public:
     Vector3 rotation;
     Vector3 scale;
 
+    displayer::Color color;
+
     PointCloud& mesh;
 
-    Entity(Vector3 position, Vector3 rotation, Vector3 scale, PointCloud& mesh)
-    : position(position), rotation(rotation), scale(scale), mesh(mesh) { }
+    Entity(Vector3 position, Vector3 rotation, Vector3 scale, displayer::Color color, PointCloud& mesh)
+    : position(position), rotation(rotation), scale(scale), color(color), mesh(mesh) { }
 
     Transformation getVertexTransformationMatrix() {
         return Transformation::identity()

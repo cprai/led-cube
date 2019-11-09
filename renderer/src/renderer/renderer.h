@@ -6,6 +6,8 @@
 #include <memory>
 #include <unordered_map>
 
+#include "displayer/color.h"
+
 #include "file/objParser.h"
 #include "file/mapParser.h"
 #include "geometry/vector3.h"
@@ -60,8 +62,8 @@ public:
         return newMesh;
     }
 
-    Entity& createEntity(Vector3 position, Vector3 rotation, Vector3 scale, PointCloud& mesh) {
-        return entities.emplace_back(position, rotation, scale, mesh);
+    Entity& createEntity(Vector3 position, Vector3 rotation, Vector3 scale, displayer::Color color, PointCloud& mesh) {
+        return entities.emplace_back(position, rotation, scale, color, mesh);
     }
 
     float ledDistanceToBrightnessFunction(float distanceSquared) {
@@ -78,23 +80,21 @@ public:
     }
 
     template<int SamplePointCount>
-    void render(Vector3 outputBuffer[SamplePointCount]) {
+    void render(displayer::Color outputBuffer[SamplePointCount]) {
         for (auto entity : entities) {
-            // Make buffer with same size as point cloud
             auto& points = entity.mesh.points;
+
+            // Make buffer with same size as point cloud
             std::vector<Vector3> transformedPoints(points.size());
 
             // Transform local point coordinates into world space
-            entity.getVertexTransformationMatrix().transform(points.get(), transformedPoints.get(), points.size());
+            entity.getVertexTransformationMatrix().transform(points.data(), transformedPoints.data(), points.size());
 
             for (auto surfacePoint : transformedPoints) {
                 for (auto [ledPosition, ledIndex] : ledLayout.getLEDsInRange(surfacePoint)) {
                     float distanceSquared = (ledPosition - surfacePoint).squaredMagnitude();
                     float brightness = ledDistanceToBrightnessFunction(distanceSquared);
-
-                    if (outputBuffer[ledIndex].x < brightness) outputBuffer[ledIndex].x = brightness;
-                    if (outputBuffer[ledIndex].y < brightness) outputBuffer[ledIndex].y = brightness;
-                    if (outputBuffer[ledIndex].z < brightness) outputBuffer[ledIndex].z = brightness;
+                    outputBuffer[ledIndex] = outputBuffer[ledIndex].mix(entity.color, brightness);
                 }
             }
         }
