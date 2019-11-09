@@ -29,6 +29,10 @@ public:
         ledLayout = new LEDLayout(samplePoints, 0.3f);
     }
 
+    ~Renderer() {
+        delete ledLayout;
+    }
+
     PointCloud& loadMesh(const std::string& path) {
         // If mesh already loaded
         if (auto search = loadedMeshes.find(path); search != loadedMeshes.end()) {
@@ -71,8 +75,8 @@ public:
             entity.getVertexTransformationMatrix().transform(transformedPoints.get(), numPoints);
 
             for (int i = 0; i < numPoints; i++) {
-                for (LEDNode* led = ledLayout->getLEDs(transformedPoints[i]); led != nullptr; led = led->next) {
-                    float distance = (led->position - transformedPoints[i]).squaredMagnitude();
+                for (auto [position, index] : ledLayout->getLEDs(transformedPoints[i])) {
+                    float distance = (position - transformedPoints[i]).squaredMagnitude();
 
                     float rangeNear = 0.1;
                     float rangeFar = 0.5;
@@ -85,32 +89,10 @@ public:
                         brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
                     }
 
-                    if (outputBuffer[led->index].x < brightness) outputBuffer[led->index].x = brightness;
-                    if (outputBuffer[led->index].y < brightness) outputBuffer[led->index].y = brightness;
-                    if (outputBuffer[led->index].z < brightness) outputBuffer[led->index].z = brightness;
+                    if (outputBuffer[index].x < brightness) outputBuffer[index].x = brightness;
+                    if (outputBuffer[index].y < brightness) outputBuffer[index].y = brightness;
+                    if (outputBuffer[index].z < brightness) outputBuffer[index].z = brightness;
                 }
-
-                //for (int j = 0; j < SamplePointCount; j++) {
-                //    float distance = (samplePoints[j] - transformedPoints[i]).squaredMagnitude();
-
-                //    float rangeNear = 0.1;
-                //    float rangeFar = 0.5;
-
-                //    float brightness = 0;
-                //    if (distance <= rangeNear) {
-                //        brightness = 1;
-                //    }
-                //    //else if (distance <= rangeFar) {
-                //    //    brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
-                //    //}
-
-                //    //if (outputBuffer[j].x < brightness) outputBuffer[j].x = brightness;
-                //    //if (outputBuffer[j].y < brightness) outputBuffer[j].y = brightness;
-                //    //if (outputBuffer[j].z < brightness) outputBuffer[j].z = brightness;
-                //    outputBuffer[j].x = brightness;
-                //    outputBuffer[j].y = brightness;
-                //    outputBuffer[j].z = brightness;
-                //}
             }
         }
     }
