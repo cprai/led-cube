@@ -19,18 +19,16 @@ namespace renderer {
 
 class Renderer {
 public:
-    Renderer(const std::string& samplePointsPath) {
+    Renderer(const std::string& samplePointsPath) : ledLayout({loadMap(samplePointsPath), 0.3f}) { }
+
+    std::vector<Vector3> loadMap(const std::string& path) {
         std::vector<Vector3> samplePoints;
 
-        std::ifstream file(samplePointsPath, std::ios_base::in);
+        std::ifstream file(path, std::ios_base::in);
         MAPParser parser(file, samplePoints);
         file.close();
 
-        ledLayout = new LEDLayout(samplePoints, 0.3f);
-    }
-
-    ~Renderer() {
-        delete ledLayout;
+        return samplePoints;
     }
 
     PointCloud& loadMesh(const std::string& path) {
@@ -75,7 +73,7 @@ public:
             entity.getVertexTransformationMatrix().transform(transformedPoints.get(), numPoints);
 
             for (int i = 0; i < numPoints; i++) {
-                for (auto [position, index] : ledLayout->getLEDs(transformedPoints[i])) {
+                for (auto [position, index] : ledLayout.getLEDs(transformedPoints[i])) {
                     float distance = (position - transformedPoints[i]).squaredMagnitude();
 
                     float rangeNear = 0.1;
@@ -98,7 +96,7 @@ public:
     }
 
 private:
-    LEDLayout* ledLayout;
+    LEDLayout ledLayout;
     std::vector<Entity> entities;
     std::vector<PointCloud> meshes;
     std::unordered_map<std::string, PointCloud*> loadedMeshes;
