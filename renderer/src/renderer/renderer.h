@@ -6,18 +6,29 @@
 #include <memory>
 #include <unordered_map>
 
-#include "geometry/matrix3D.h"
-#include "geometry/vector3.h"
 #include "file/objParser.h"
+#include "file/mapParser.h"
+#include "geometry/vector3.h"
 #include "renderer/entity.h"
 #include "renderer/mesh.h"
 #include "renderer/pointCloud.h"
+#include "renderer/ledLayout.h"
 
 namespace renderer {
 
 
 class Renderer {
 public:
+    Renderer(const std::string& samplePointsPath) {
+        std::vector<Vector3> samplePoints;
+
+        std::ifstream file(samplePointsPath, std::ios_base::in);
+        MAPParser parser(file, samplePoints);
+        file.close();
+
+        ledLayout = new LEDLayout(samplePoints, 0.3f);
+    }
+
     PointCloud& loadMesh(const std::string& path) {
         // If mesh already loaded
         if (auto search = loadedMeshes.find(path); search != loadedMeshes.end()) {
@@ -48,7 +59,7 @@ public:
     }
 
     template<int SamplePointCount>
-    void render(Vector3 samplePoints[SamplePointCount], Vector3 outputBuffer[SamplePointCount]) {
+    void render(Vector3 outputBuffer[SamplePointCount]) {
         for (auto entity : entities) {
             // Make copy of point cloud
             auto& points = entity.mesh.points;
@@ -60,8 +71,8 @@ public:
             entity.getVertexTransformationMatrix().transform(transformedPoints.get(), numPoints);
 
             for (int i = 0; i < numPoints; i++) {
-                for (int j = 0; j < SamplePointCount; j++) {
-                    float distance = (samplePoints[j] - transformedPoints[i]).magnitude();
+                for (LEDNode* led = ledLayout->getLEDs(transformedPoints[i]); led != nullptr; led = led->next) {
+                    float distance = (led->position - transformedPoints[i]).squaredMagnitude();
 
                     float rangeNear = 0.1;
                     float rangeFar = 0.5;
@@ -74,15 +85,38 @@ public:
                         brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
                     }
 
-                    if (outputBuffer[j].x < brightness) outputBuffer[j].x = brightness;
-                    if (outputBuffer[j].y < brightness) outputBuffer[j].y = brightness;
-                    if (outputBuffer[j].z < brightness) outputBuffer[j].z = brightness;
+                    if (outputBuffer[led->index].x < brightness) outputBuffer[led->index].x = brightness;
+                    if (outputBuffer[led->index].y < brightness) outputBuffer[led->index].y = brightness;
+                    if (outputBuffer[led->index].z < brightness) outputBuffer[led->index].z = brightness;
                 }
+
+                //for (int j = 0; j < SamplePointCount; j++) {
+                //    float distance = (samplePoints[j] - transformedPoints[i]).squaredMagnitude();
+
+                //    float rangeNear = 0.1;
+                //    float rangeFar = 0.5;
+
+                //    float brightness = 0;
+                //    if (distance <= rangeNear) {
+                //        brightness = 1;
+                //    }
+                //    //else if (distance <= rangeFar) {
+                //    //    brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
+                //    //}
+
+                //    //if (outputBuffer[j].x < brightness) outputBuffer[j].x = brightness;
+                //    //if (outputBuffer[j].y < brightness) outputBuffer[j].y = brightness;
+                //    //if (outputBuffer[j].z < brightness) outputBuffer[j].z = brightness;
+                //    outputBuffer[j].x = brightness;
+                //    outputBuffer[j].y = brightness;
+                //    outputBuffer[j].z = brightness;
+                //}
             }
         }
     }
 
 private:
+    LEDLayout* ledLayout;
     std::vector<Entity> entities;
     std::vector<PointCloud> meshes;
     std::unordered_map<std::string, PointCloud*> loadedMeshes;
