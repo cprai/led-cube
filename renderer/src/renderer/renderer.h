@@ -19,7 +19,11 @@ namespace renderer {
 
 class Renderer {
 public:
-    Renderer(const std::string& samplePointsPath) : ledLayout({loadMap(samplePointsPath), 0.3f}) { }
+    Renderer(const std::string& samplePointsPath, float rangeNear, float rangeFar) :
+        ledLayout({loadMap(samplePointsPath), 0.3f}),
+        rangeNearSquared(rangeNear*rangeNear),
+        rangeFarSquared(rangeFar*rangeFar)
+    { }
 
     std::vector<Vector3> loadMap(const std::string& path) {
         std::vector<Vector3> samplePoints;
@@ -60,36 +64,37 @@ public:
         return entities.emplace_back(position, rotation, scale, mesh);
     }
 
+    float ledDistanceToBrightnessFunction(float distanceSquared) {
+        float brightness = 0;
+
+        if (distanceSquared <= rangeNearSquared) {
+            brightness = 1;
+        }
+        else if (distanceSquared <= rangeFarSquared) {
+            brightness = 1 - (distanceSquared - rangeNearSquared)/(rangeFarSquared - rangeNearSquared);
+        }
+
+        return brightness;
+    }
+
     template<int SamplePointCount>
     void render(Vector3 outputBuffer[SamplePointCount]) {
         for (auto entity : entities) {
-            // Make copy of point cloud
+            // Make buffer with same size as point cloud
             auto& points = entity.mesh.points;
-            int numPoints = (int)points.size();
-            auto transformedPoints = std::make_unique<Vector3[]>(points.size());
-            std::copy(points.begin(), points.end(), transformedPoints.get());
+            std::vector<Vector3> transformedPoints(points.size());
 
             // Transform local point coordinates into world space
-            entity.getVertexTransformationMatrix().transform(transformedPoints.get(), numPoints);
+            entity.getVertexTransformationMatrix().transform(points.get(), transformedPoints.get(), points.size());
 
-            for (int i = 0; i < numPoints; i++) {
-                for (auto [position, index] : ledLayout.getLEDs(transformedPoints[i])) {
-                    float distance = (position - transformedPoints[i]).squaredMagnitude();
+            for (auto surfacePoint : transformedPoints) {
+                for (auto [ledPosition, ledIndex] : ledLayout.getLEDsInRange(surfacePoint)) {
+                    float distanceSquared = (ledPosition - surfacePoint).squaredMagnitude();
+                    float brightness = ledDistanceToBrightnessFunction(distanceSquared);
 
-                    float rangeNear = 0.1;
-                    float rangeFar = 0.5;
-
-                    float brightness = 0;
-                    if (distance <= rangeNear) {
-                        brightness = 1;
-                    }
-                    else if (distance <= rangeFar) {
-                        brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
-                    }
-
-                    if (outputBuffer[index].x < brightness) outputBuffer[index].x = brightness;
-                    if (outputBuffer[index].y < brightness) outputBuffer[index].y = brightness;
-                    if (outputBuffer[index].z < brightness) outputBuffer[index].z = brightness;
+                    if (outputBuffer[ledIndex].x < brightness) outputBuffer[ledIndex].x = brightness;
+                    if (outputBuffer[ledIndex].y < brightness) outputBuffer[ledIndex].y = brightness;
+                    if (outputBuffer[ledIndex].z < brightness) outputBuffer[ledIndex].z = brightness;
                 }
             }
         }
@@ -100,6 +105,8 @@ private:
     std::vector<Entity> entities;
     std::vector<PointCloud> meshes;
     std::unordered_map<std::string, PointCloud*> loadedMeshes;
+
+    float rangeNearSquared, rangeFarSquared;
 
 };
 

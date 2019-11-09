@@ -25,7 +25,7 @@ public:
         }
     }
 
-    std::vector<LED> getLEDs(Vector3 position) {
+    std::vector<LED> getLEDsInRange(Vector3 position) {
         return layout[getBin(position)];
     }
 
