@@ -84,9 +84,9 @@ public:
         int y = (int)std::floor(position.y/binSize);
         int z = (int)std::floor(position.z/binSize);
 
-        if (x < xMin || x >= xMax) return;
-        if (y < yMin || y >= yMax) return;
-        if (z < zMin || z >= zMax) return;
+        if (x < xMin || x >= xMax) return nullptr;
+        if (y < yMin || y >= yMax) return nullptr;
+        if (z < zMin || z >= zMax) return nullptr;
 
         return layout[getLayoutCoordinate(x, y, z)];
     }
