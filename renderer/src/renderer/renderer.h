@@ -6,43 +6,67 @@
 #include <memory>
 #include <unordered_map>
 
-#include "geometry/matrix3D.h"
-#include "geometry/vector3.h"
+#include "displayer/color.h"
+
 #include "file/objParser.h"
+#include "file/mapParser.h"
+#include "geometry/vector3.h"
 #include "renderer/entity.h"
 #include "renderer/mesh.h"
+#include "renderer/pointCloud.h"
+#include "renderer/ledLayout.h"
 
-#include <iostream>
 namespace renderer {
 
 
 class Renderer {
 public:
-    Mesh& loadMesh(const std::string& path) {
+    Renderer(const std::string& samplePointsPath, float rangeNear, float rangeFar) :
+        ledLayout({loadMap(samplePointsPath), 0.3f}),
+        rangeNearSquared(rangeNear*rangeNear),
+        rangeFarSquared(rangeFar*rangeFar)
+    { }
+
+    std::vector<Vector3> loadMap(const std::string& path) {
+        std::vector<Vector3> samplePoints;
+
+        std::ifstream file(path, std::ios_base::in);
+        MAPParser parser(file, samplePoints);
+        file.close();
+
+        return samplePoints;
+    }
+
+    PointCloud& loadMesh(const std::string& path) {
         // If mesh already loaded
         if (auto search = loadedMeshes.find(path); search != loadedMeshes.end()) {
             return *search->second;
         }
 
         // Create empty mesh
-        Mesh& newMesh = meshes.emplace_back();
+        Mesh parseResults;
 
         // Load mesh data from file
         // =========================================== Error handle file not found??
         std::ifstream file(path, std::ios_base::in);
-        OBJParser parser(file, newMesh);
+        OBJParser parser(file, parseResults);
         file.close();
 
+        // Create point cloud from mesh data
+        PointCloud& newMesh = meshes.emplace_back(parseResults);
+
+        // Store parsed result in map
         // Use substr() to get a copy of the path string
         loadedMeshes.insert(std::pair(path.substr(), &newMesh));
 
         return newMesh;
     }
 
-    Entity& createEntity(Vector3 position, Vector3 rotation, Vector3 scale, Mesh& mesh) {
-        return entities.emplace_back(position, rotation, scale, mesh);
+    Entity& createEntity(Vector3 position, Vector3 rotation, Vector3 scale, displayer::Color color, PointCloud& mesh) {
+        return entities.emplace_back(position, rotation, scale, color, mesh);
     }
 
+<<<<<<< HEAD
     template<int SamplePointCount>
     void renderTriangle(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 samplePoints[SamplePointCount], Vector3 outputBuffer[SamplePointCount]) {
         // ============================================ Error deal with degenerate triangles
@@ -100,35 +124,49 @@ public:
             if (v13prog == v13dist && v23prog == v23dist) {
                 break;
             }
+=======
+    float ledDistanceToBrightnessFunction(float distanceSquared) {
+        float brightness = 0;
+
+        if (distanceSquared <= rangeNearSquared) {
+            brightness = 1;
+>>>>>>> master
         }
+        else if (distanceSquared <= rangeFarSquared) {
+            brightness = 1 - (distanceSquared - rangeNearSquared)/(rangeFarSquared - rangeNearSquared);
+        }
+
+        return brightness;
     }
 
     template<int SamplePointCount>
-    void render(Vector3 samplePoints[SamplePointCount], Vector3 outputBuffer[SamplePointCount]) {
+    void render(displayer::Color outputBuffer[SamplePointCount]) {
         for (auto entity : entities) {
-            auto& vertices = entity.mesh.vertices;
-            auto transformedVertices = std::make_unique<Vertex[]>(vertices.size());
-            std::copy(vertices.begin(), vertices.end(), transformedVertices.get());
-            entity.getVertexTransformationMatrix().transform(transformedVertices.get(), vertices.size());
+            auto& points = entity.mesh.points;
 
-            for (std::size_t i = 0; i < entity.mesh.triangles.size(); i++) {
-                Vertex x1 = transformedVertices[entity.mesh.triangles[i].v1];
-                Vertex x2 = transformedVertices[entity.mesh.triangles[i].v2];
-                Vertex x3 = transformedVertices[entity.mesh.triangles[i].v3];
+            // Make buffer with same size as point cloud
+            std::vector<Vector3> transformedPoints(points.size());
 
-                Vector3 v1 = {x1.x,x1.y,x1.z};
-                Vector3 v2 = {x2.x,x2.y,x2.z};
-                Vector3 v3 = {x3.x,x3.y,x3.z};
+            // Transform local point coordinates into world space
+            entity.getVertexTransformationMatrix().transform(points.data(), transformedPoints.data(), points.size());
 
-                renderTriangle<SamplePointCount>(v1, v2, v3, samplePoints, outputBuffer);
+            for (auto surfacePoint : transformedPoints) {
+                for (auto [ledPosition, ledIndex] : ledLayout.getLEDsInRange(surfacePoint)) {
+                    float distanceSquared = (ledPosition - surfacePoint).squaredMagnitude();
+                    float brightness = ledDistanceToBrightnessFunction(distanceSquared);
+                    outputBuffer[ledIndex] = outputBuffer[ledIndex].mix(entity.color, brightness);
+                }
             }
         }
     }
 
 private:
+    LEDLayout ledLayout;
     std::vector<Entity> entities;
-    std::vector<Mesh> meshes;
-    std::unordered_map<std::string, Mesh*> loadedMeshes;
+    std::vector<PointCloud> meshes;
+    std::unordered_map<std::string, PointCloud*> loadedMeshes;
+
+    float rangeNearSquared, rangeFarSquared;
 
 };
 
