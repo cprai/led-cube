@@ -66,71 +66,11 @@ public:
         return entities.emplace_back(position, rotation, scale, color, mesh);
     }
 
-<<<<<<< HEAD
-    template<int SamplePointCount>
-    void renderTriangle(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 samplePoints[SamplePointCount], Vector3 outputBuffer[SamplePointCount]) {
-        // ============================================ Error deal with degenerate triangles
-        float v13dist = (v3 - v1).magnitude();
-        float v23dist = (v3 - v2).magnitude();
-        float v13prog = 0;
-        float v23prog = 0;
-        Vector3 v13step = (v3 - v1).normalized()*0.25;
-        Vector3 v23step = (v3 - v2).normalized()*0.25;
-        for (Vector3 v13ptr = v1, v23ptr = v2; ; v13ptr = v13ptr + v13step, v23ptr = v23ptr + v23step, v13prog += 0.25, v23prog += 0.25) {
-            if (v13prog > v13dist) {
-                v13ptr = v3;
-                v13prog = v13dist;
-            }
-            if (v23prog > v23dist) {
-                v23ptr = v3;
-                v23prog = v23dist;
-            }
-
-            float vlrdist = (v23ptr - v13ptr).magnitude();
-            float vlrprog = 0;
-            Vector3 vlrstep = (v23ptr - v13ptr).normalized()*0.25;
-            for (Vector3 vlrptr = v13ptr; ; vlrptr = vlrptr + vlrstep, vlrprog += 0.25) {
-                if (vlrprog > vlrdist) {
-                    vlrptr = v23ptr;
-                    vlrprog = vlrdist;
-                }
-
-                for (int i = 0; i < SamplePointCount; i++) {
-                    float distance = (samplePoints[i] - vlrptr).magnitude();
-
-                    // brightness = 1 if distance < rangeNear
-                    // brightness = [0, 1] if distance < rangeFar
-                    float rangeNear = 0.1;
-                    float rangeFar = 0.5;
-
-                    float brightness = 0;
-                    if (distance <= rangeNear) {
-                        brightness = 1;
-                    }
-                    else if (distance <= rangeFar) {
-                        brightness = 1 - (distance - rangeNear)/(rangeFar - rangeNear);
-                    }
-
-                    if (outputBuffer[i].x < brightness) outputBuffer[i].x = brightness;
-                    if (outputBuffer[i].y < brightness) outputBuffer[i].y = 0;
-                    if (outputBuffer[i].z < brightness) outputBuffer[i].z = 0;
-                }
-
-                if (vlrprog == vlrdist) {
-                    break;
-                }
-            }
-
-            if (v13prog == v13dist && v23prog == v23dist) {
-                break;
-            }
-=======
     float ledDistanceToBrightnessFunction(float distanceSquared) {
         float brightness = 0;
 
         if (distanceSquared <= rangeNearSquared) {
             brightness = 1;
->>>>>>> master
         }
         else if (distanceSquared <= rangeFarSquared) {
             brightness = 1 - (distanceSquared - rangeNearSquared)/(rangeFarSquared - rangeNearSquared);
