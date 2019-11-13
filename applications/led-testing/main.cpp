@@ -113,42 +113,13 @@
 
 #define N 294
 
-std::vector<renderer::Vector3> samplePoints;
-
-inline std::vector<std::string> tokenizeOnWhitespace(const std::string& line) {
-  std::istringstream tokenizer(line);
-  std::vector<std::string> tokens;
-
-  for (std::string token; tokenizer >> token; ) {
-    tokens.push_back(token);
-  }
-
-  return tokens;
-}
-
-void parseLine(const std::string& line) {
-  std::vector<std::string> tokens = tokenizeOnWhitespace(line);
-
-  float x = std::stof(tokens[0]);
-  float y = std::stof(tokens[1]);
-  float z = std::stof(tokens[2]);
-
-  samplePoints.push_back({x, y, z});
-}
 
 int main() {
-  std::ifstream file("resources/cube.map");
-
-  for (std::string line; std::getline(file, line);) {
-    parseLine(line);
-  }
-
-
-  renderer::Renderer renderer;
+  renderer::Renderer renderer("resources/cube.map");
   displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
-  renderer::Entity &teapot = renderer.createEntity({3, 3, 2}, {0, 0, 0}, {1, 1, 1},
+  renderer::Entity &teapot = renderer.createEntity({3, 3, 2}, {0, 0, 0}, {1, 1, 1}, {1, 0, 0},
                                                    renderer.loadMesh("resources/teapot.obj"));
 
 //  for (int i = 0; i < N; ++i) {
@@ -156,7 +127,7 @@ int main() {
 //  }
 //  int i = 0;
   while(1) {
-    renderer::Vector3 outputBuffer[294];
+    displayer::Color outputBuffer[294];
     // To modify after creation:
 //    teapot.position.z = ((float) i - 30) / 10;
 //    printf("z: %f\n", ((float) i - 30) / 10);
@@ -165,7 +136,7 @@ int main() {
     teapot.scale.y = 0.6;
     teapot.scale.z = 0.6;
 
-    renderer.render<N>(samplePoints.data(), outputBuffer);
-    displayer.display((displayer::Color *) outputBuffer);
+    renderer.render<N>(outputBuffer);
+    displayer.display(outputBuffer);
   }
 }
