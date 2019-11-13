@@ -114,33 +114,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* POTENTIOMETER_readPath = "/sys/bus/iio/devices/iio:device0/in_voltage0_raw";
-
-int readFromFile(const char* path) {
-	FILE* file = fopen(path, "r");
-
-	if (file == NULL) {
-		fprintf(stderr, "Error: Failed to open %s for reading\n", path);
-		exit(EXIT_FAILURE);
-	}
-
-	char buffer[256];
-	fgets(buffer, 256, file);
-	int result = atoi(buffer);
-
-	if(fclose(file) != 0) {
-		fprintf(stderr, "Error: Failed to close %s after reading\n", path);
-		exit(EXIT_FAILURE);
-	}
-
-	return result;
-}
-
-float POTENTIOMETER_readValue() {
-	return readFromFile(POTENTIOMETER_readPath)/(float)4096;
-}
-
-
 #define N 294
 
 
@@ -156,6 +129,7 @@ int main() {
 //    printf("Sample point %d: %lf, %lf, %lf\n", i, samplePoints[i].x, samplePoints[i].y, samplePoints[i].z);
 //  }
 //  int i = 0;
+  float modifier = 0.1;
   while(1) {
     displayer::Color outputBuffer[294];
     // To modify after creation:
@@ -166,7 +140,9 @@ int main() {
     teapot.scale.y = 0.6;
     teapot.scale.z = 0.6;
 
-    teapot.position.x = 3 + POTENTIOMETER_readValue();
+    teapot.position.x += modifier;
+    if (teapot.position.x > 4) modifier = -0.1;
+    if (teapot.position.x < 2) modifier = 0.1;
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
