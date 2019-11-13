@@ -25,13 +25,15 @@ applications/led-testing/CMakeFiles/led-testing.dir/main.cpp.o
  ../displayer/src/displayer/ledscape.h
  ../displayer/src/displayer/pru.h
  ../displayer/src/displayer/util.h
+ ../renderer/src/file/mapParser.h
  ../renderer/src/file/objParser.h
- ../renderer/src/geometry/matrix3D.h
  ../renderer/src/geometry/transformation.h
  ../renderer/src/geometry/triangle.h
  ../renderer/src/geometry/vector3.h
- ../renderer/src/geometry/vertex.h
  ../renderer/src/renderer/entity.h
+ ../renderer/src/renderer/interpolator.h
+ ../renderer/src/renderer/ledLayout.h
  ../renderer/src/renderer/mesh.h
+ ../renderer/src/renderer/pointCloud.h
  ../renderer/src/renderer/renderer.h
  /www/classes/433/work/project/led-cube/applications/led-testing/main.cpp

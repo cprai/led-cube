@@ -95,6 +95,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/www/classes/433/work/project/led-cube/displayer/src"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -119,6 +120,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/www/classes/433/work/project/led-cube/renderer/src"/>
+					<Add directory="/www/classes/433/work/project/led-cube/displayer/src"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -144,42 +146,53 @@
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/include/pruss_intc_mapping.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/include/prussdrv.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/color.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/displayer.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.c">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/pru.c">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/pru.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/util.c">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/displayer/src/displayer/util.h">
 			<Option target="led-testing"/>
+			<Option target="slice"/>
 		</Unit>
-		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/file/objParser.h">
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/file/mapParser.h">
 			<Option target="led-testing"/>
 			<Option target="slice"/>
 		</Unit>
-		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/matrix3D.h">
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/file/objParser.h">
 			<Option target="led-testing"/>
 			<Option target="slice"/>
 		</Unit>
@@ -195,15 +208,23 @@
 			<Option target="led-testing"/>
 			<Option target="slice"/>
 		</Unit>
-		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/geometry/vertex.h">
-			<Option target="led-testing"/>
-			<Option target="slice"/>
-		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/entity.h">
 			<Option target="led-testing"/>
 			<Option target="slice"/>
 		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/interpolator.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/ledLayout.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
 		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/mesh.h">
+			<Option target="led-testing"/>
+			<Option target="slice"/>
+		</Unit>
+		<Unit filename="/www/classes/433/work/project/led-cube/renderer/src/renderer/pointCloud.h">
 			<Option target="led-testing"/>
 			<Option target="slice"/>
 		</Unit>

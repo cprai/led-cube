@@ -165,7 +165,7 @@ applications/slice/preinstall:
 applications/slice/CMakeFiles/slice.dir/all:
 	$(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/depend
 	$(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target slice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target slice"
 .PHONY : applications/slice/CMakeFiles/slice.dir/all
 
 # Include target in all.
@@ -175,7 +175,7 @@ all: applications/slice/CMakeFiles/slice.dir/all
 
 # Build rule for subdir invocation for target.
 applications/slice/CMakeFiles/slice.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 applications/slice/CMakeFiles/slice.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles 0
 .PHONY : applications/slice/CMakeFiles/slice.dir/rule

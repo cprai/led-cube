@@ -125,6 +125,114 @@ slice/fast:
 	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/build
 .PHONY : slice/fast
 
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.o: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
+
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.o
+
+# target to build an object file
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
+
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.i: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
+
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.i
+
+# target to preprocess a source file
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
+
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.s: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
+
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.s
+
+# target to generate assembly for a file
+__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
+.PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
+
+__/__/displayer/src/displayer/ledscape.o: __/__/displayer/src/displayer/ledscape.c.o
+
+.PHONY : __/__/displayer/src/displayer/ledscape.o
+
+# target to build an object file
+__/__/displayer/src/displayer/ledscape.c.o:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o
+.PHONY : __/__/displayer/src/displayer/ledscape.c.o
+
+__/__/displayer/src/displayer/ledscape.i: __/__/displayer/src/displayer/ledscape.c.i
+
+.PHONY : __/__/displayer/src/displayer/ledscape.i
+
+# target to preprocess a source file
+__/__/displayer/src/displayer/ledscape.c.i:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.i
+.PHONY : __/__/displayer/src/displayer/ledscape.c.i
+
+__/__/displayer/src/displayer/ledscape.s: __/__/displayer/src/displayer/ledscape.c.s
+
+.PHONY : __/__/displayer/src/displayer/ledscape.s
+
+# target to generate assembly for a file
+__/__/displayer/src/displayer/ledscape.c.s:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.s
+.PHONY : __/__/displayer/src/displayer/ledscape.c.s
+
+__/__/displayer/src/displayer/pru.o: __/__/displayer/src/displayer/pru.c.o
+
+.PHONY : __/__/displayer/src/displayer/pru.o
+
+# target to build an object file
+__/__/displayer/src/displayer/pru.c.o:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o
+.PHONY : __/__/displayer/src/displayer/pru.c.o
+
+__/__/displayer/src/displayer/pru.i: __/__/displayer/src/displayer/pru.c.i
+
+.PHONY : __/__/displayer/src/displayer/pru.i
+
+# target to preprocess a source file
+__/__/displayer/src/displayer/pru.c.i:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.i
+.PHONY : __/__/displayer/src/displayer/pru.c.i
+
+__/__/displayer/src/displayer/pru.s: __/__/displayer/src/displayer/pru.c.s
+
+.PHONY : __/__/displayer/src/displayer/pru.s
+
+# target to generate assembly for a file
+__/__/displayer/src/displayer/pru.c.s:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.s
+.PHONY : __/__/displayer/src/displayer/pru.c.s
+
+__/__/displayer/src/displayer/util.o: __/__/displayer/src/displayer/util.c.o
+
+.PHONY : __/__/displayer/src/displayer/util.o
+
+# target to build an object file
+__/__/displayer/src/displayer/util.c.o:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o
+.PHONY : __/__/displayer/src/displayer/util.c.o
+
+__/__/displayer/src/displayer/util.i: __/__/displayer/src/displayer/util.c.i
+
+.PHONY : __/__/displayer/src/displayer/util.i
+
+# target to preprocess a source file
+__/__/displayer/src/displayer/util.c.i:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.i
+.PHONY : __/__/displayer/src/displayer/util.c.i
+
+__/__/displayer/src/displayer/util.s: __/__/displayer/src/displayer/util.c.s
+
+.PHONY : __/__/displayer/src/displayer/util.s
+
+# target to generate assembly for a file
+__/__/displayer/src/displayer/util.c.s:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.s
+.PHONY : __/__/displayer/src/displayer/util.c.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -161,6 +269,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... slice"
 	@echo "... edit_cache"
+	@echo "... __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.o"
+	@echo "... __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.i"
+	@echo "... __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.s"
+	@echo "... __/__/displayer/src/displayer/ledscape.o"
+	@echo "... __/__/displayer/src/displayer/ledscape.i"
+	@echo "... __/__/displayer/src/displayer/ledscape.s"
+	@echo "... __/__/displayer/src/displayer/pru.o"
+	@echo "... __/__/displayer/src/displayer/pru.i"
+	@echo "... __/__/displayer/src/displayer/pru.s"
+	@echo "... __/__/displayer/src/displayer/util.o"
+	@echo "... __/__/displayer/src/displayer/util.i"
+	@echo "... __/__/displayer/src/displayer/util.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

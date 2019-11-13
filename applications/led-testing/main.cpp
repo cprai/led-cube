@@ -122,7 +122,10 @@ int main() {
   displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
-  renderer::Entity &teapot = renderer.createEntity({3, 3, 2}, {0, 0, 0}, {1, 1, 1}, {1, 0, 0},
+  renderer::Entity &teapot = renderer.createEntity({1, 3, 1}, {0, 0, 0}, {1, 1, 1}, {0.25, 0, 0},
+                                                   renderer.loadMesh("resources/teapot.obj"));
+
+  renderer::Entity &teapot2 = renderer.createEntity({5, 3, 5}, {0, 0, 0}, {1, 1, 1}, {0, 0, 0.25},
                                                    renderer.loadMesh("resources/teapot.obj"));
 
 //  for (int i = 0; i < N; ++i) {
@@ -130,19 +133,30 @@ int main() {
 //  }
 //  int i = 0;
   float modifier = 0.1;
+  float otherModifier = 0.0;
   while(1) {
     displayer::Color outputBuffer[294];
     // To modify after creation:
 //    teapot.position.z = ((float) i - 30) / 10;
 //    printf("z: %f\n", ((float) i - 30) / 10);
 //    i = (i + 10) % 60;
-    teapot.scale.x = 0.6;
-    teapot.scale.y = 0.6;
-    teapot.scale.z = 0.6;
+    teapot.scale.x = 0.5;
+    teapot.scale.y = 0.5;
+    teapot.scale.z = 0.5;
 
-    teapot.position.x += modifier;
+    teapot2.scale.x = 0.5;
+    teapot2.scale.y = 0.5;
+    teapot2.scale.z = 0.5;
+
+
+    teapot.rotation.y = otherModifier;
+    teapot2.rotation.y = otherModifier + 3.14;
+    teapot.color.g = 0.175;
+    teapot2.color.g = 0.175;
+
     if (teapot.position.x > 4) modifier = -0.1;
     if (teapot.position.x < 2) modifier = 0.1;
+    otherModifier += 0.1;
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);

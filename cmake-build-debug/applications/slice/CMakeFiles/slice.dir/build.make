@@ -70,17 +70,77 @@ applications/slice/CMakeFiles/slice.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/slice.dir/main.cpp.s"
 	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /www/classes/433/work/project/led-cube/applications/slice/main.cpp -o CMakeFiles/slice.dir/main.cpp.s
 
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o: applications/slice/CMakeFiles/slice.dir/flags.make
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o: ../displayer/src/displayer/am335x/app_loader/interface/prussdrv.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o   -c /www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c > CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /www/classes/433/work/project/led-cube/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o: applications/slice/CMakeFiles/slice.dir/flags.make
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o: ../displayer/src/displayer/util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o   -c /www/classes/433/work/project/led-cube/displayer/src/displayer/util.c
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.i"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /www/classes/433/work/project/led-cube/displayer/src/displayer/util.c > CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.i
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.s"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /www/classes/433/work/project/led-cube/displayer/src/displayer/util.c -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.s
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o: applications/slice/CMakeFiles/slice.dir/flags.make
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o: ../displayer/src/displayer/pru.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o   -c /www/classes/433/work/project/led-cube/displayer/src/displayer/pru.c
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.i"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /www/classes/433/work/project/led-cube/displayer/src/displayer/pru.c > CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.i
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.s"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /www/classes/433/work/project/led-cube/displayer/src/displayer/pru.c -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.s
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o: applications/slice/CMakeFiles/slice.dir/flags.make
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o: ../displayer/src/displayer/ledscape.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o   -c /www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.c
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.i"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.c > CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.i
+
+applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.s"
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && arm-linux-gnueabihf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /www/classes/433/work/project/led-cube/displayer/src/displayer/ledscape.c -o CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.s
+
 # Object files for target slice
 slice_OBJECTS = \
-"CMakeFiles/slice.dir/main.cpp.o"
+"CMakeFiles/slice.dir/main.cpp.o" \
+"CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o" \
+"CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o" \
+"CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o" \
+"CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o"
 
 # External object files for target slice
 slice_EXTERNAL_OBJECTS =
 
 bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/main.cpp.o
+bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
+bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/util.c.o
+bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/pru.c.o
+bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/__/__/displayer/src/displayer/ledscape.c.o
 bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/build.make
 bin/applications/slice/slice: applications/slice/CMakeFiles/slice.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/applications/slice/slice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ../../bin/applications/slice/slice"
 	cd /www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/slice.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
