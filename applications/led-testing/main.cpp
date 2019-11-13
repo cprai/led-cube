@@ -115,7 +115,7 @@
 
 
 int main() {
-  renderer::Renderer renderer("resources/cube.map");
+  renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
   displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
