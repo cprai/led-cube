@@ -10,34 +10,36 @@
 using namespace renderer;
 
 int main() {
-    renderer::Renderer renderer;
-    //renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {1, 0, 0}, {4, 4, 1}, renderer.loadMesh("simple.obj"));
-    renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {0, 0, 3.14}, {1, 1, 1}, renderer.loadMesh("resources/teapot.obj"));
-    //teapot.position.x += 3;
-
-    //Vector3 samplePoints[1] = {{2.5, 1, 0}};
-    //Vector3 outputBuffer[1];
-    //renderer.render<1>(samplePoints, outputBuffer);
-
+    /*
+    // For generating map files
     float radius = 20.0f;
-    Vector3 samplePoints[N*N];
-    Vector3 outputBuffer[N*N];
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            samplePoints[j*N + i] = Vector3(i/(float)N*radius - radius/2, j/(float)N*radius - radius/2, 0.0f);
+            Vector3 a = Vector3(i/(float)N*radius - radius/2, j/(float)N*radius - radius/2, 0.0f);
+            printf("%f %f %f\n", a.x, a.y, a.z);
         }
     }
-    renderer.render<N*N>(samplePoints, outputBuffer);
+    */
+
+    renderer::Renderer renderer("resources/cube-100x100.map", 0.1, 0.5);
+    renderer::Entity& teapot = renderer.createEntity({0, 0, 0}, {0, 0, 3.14}, {1, 1, 1}, {1, 0, 0}, renderer.loadMesh("resources/teapot.obj"));
+    renderer::Entity& teapot2 = renderer.createEntity({0, 1, 0}, {0, 0, 3.14}, {1, 1, 1}, {0, 1, 1}, renderer.loadMesh("resources/teapot.obj"));
+
+    displayer::Color outputBuffer[N*N];
+
+    for (int i = 0; i < 10; i++) {
+        renderer.render<N*N>(outputBuffer);
+        printf("frame\n");
+    }
+
     bitmap_image image(N, N);
     image.clear();
     for (int j = 0; j < N; j++) {
         for (int i = 0; i < N; i++) {
-            //std::cout << std::fixed << std::setprecision(1) << outputBuffer[j*N + i].x << " ";
-            Vector3 color = outputBuffer[j*N + i];
-            image.set_pixel(i, j, color.x*255, color.y*255, color.z*255);
+            displayer::Color color = outputBuffer[j*N + i];
+            image.set_pixel(i, j, color.r*255, color.g*255, color.b*255);
         }
-        //std::cout << std::endl;
     }
+
     image.save_image("test.bmp");
-    (void)teapot;
 }
