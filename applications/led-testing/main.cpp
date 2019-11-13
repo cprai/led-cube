@@ -111,6 +111,36 @@
 #include <string>
 #include <vector>
 
+#include <stdio.h>
+#include <stdlib.h>
+
+char* POTENTIOMETER_readPath = "/sys/bus/iio/devices/iio:device0/in_voltage0_raw";
+
+int readFromFile(const char* path) {
+	FILE* file = fopen(path, "r");
+
+	if (file == NULL) {
+		fprintf(stderr, "Error: Failed to open %s for reading\n", path);
+		exit(EXIT_FAILURE);
+	}
+
+	char buffer[256];
+	fgets(buffer, 256, file);
+	int result = atoi(buffer);
+
+	if(fclose(file) != 0) {
+		fprintf(stderr, "Error: Failed to close %s after reading\n", path);
+		exit(EXIT_FAILURE);
+	}
+
+	return result;
+}
+
+float POTENTIOMETER_readValue() {
+	return readFromFile(POTENTIOMETER_readPath)/(float)4096;
+}
+
+
 #define N 294
 
 
@@ -135,6 +165,8 @@ int main() {
     teapot.scale.x = 0.6;
     teapot.scale.y = 0.6;
     teapot.scale.z = 0.6;
+
+    teapot.position.x = 3 + POTENTIOMETER_readValue();
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
