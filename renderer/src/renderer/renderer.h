@@ -1,5 +1,6 @@
 #pragma once
 
+#include <list>
 #include <cmath>
 #include <vector>
 #include <string>
@@ -102,8 +103,8 @@ public:
 
 private:
     LEDLayout ledLayout;
-    std::vector<Entity> entities;
-    std::vector<PointCloud> meshes;
+    std::list<Entity> entities;
+    std::list<PointCloud> meshes;
     std::unordered_map<std::string, PointCloud*> loadedMeshes;
 
     float rangeNearSquared, rangeFarSquared;
