@@ -101,6 +101,10 @@
 //}
 
 // #################### 3D
+extern "C" {
+#include "controller/joystick.h"
+}
+
 #include "geometry/vector3.h"
 #include "renderer/renderer.h"
 #include "displayer/color.h"
@@ -118,6 +122,7 @@
 
 
 int main() {
+  Joystick_init();
   renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
   displayer::Displayer<N> displayer;
 
@@ -132,8 +137,6 @@ int main() {
 //    printf("Sample point %d: %lf, %lf, %lf\n", i, samplePoints[i].x, samplePoints[i].y, samplePoints[i].z);
 //  }
 //  int i = 0;
-  float modifier = 0.1;
-  float otherModifier = 0.0;
   while(1) {
     displayer::Color outputBuffer[294];
     // To modify after creation:
@@ -148,17 +151,14 @@ int main() {
     teapot2.scale.y = 0.5;
     teapot2.scale.z = 0.5;
 
-
-    teapot.rotation.y = otherModifier;
-    teapot2.rotation.y = otherModifier + 3.14;
+    float modifier = Joystick_getState(AXIS, L_STICK_X)/(float)3000;
+    teapot.rotation.y = modifier;
     teapot.color.g = 0.175;
     teapot2.color.g = 0.175;
-
-    if (teapot.position.x > 4) modifier = -0.1;
-    if (teapot.position.x < 2) modifier = 0.1;
-    otherModifier += 0.1;
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
   }
+
+  Joystick_cleanUp();
 }
