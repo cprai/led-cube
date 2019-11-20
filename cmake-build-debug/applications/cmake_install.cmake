@@ -39,6 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/www/classes/433/work/project/led-cube/cmake-build-debug/applications/controller-testing/cmake_install.cmake")
   include("/www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/cmake_install.cmake")
   include("/www/classes/433/work/project/led-cube/cmake-build-debug/applications/slice/cmake_install.cmake")
 

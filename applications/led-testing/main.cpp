@@ -109,6 +109,7 @@ extern "C" {
 #include "renderer/renderer.h"
 #include "displayer/color.h"
 #include "displayer/displayer.h"
+#include <chrono>
 
 #include <iostream>
 #include <fstream>
@@ -127,37 +128,55 @@ int main() {
   displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
-  renderer::Entity &teapot = renderer.createEntity({1, 3, 1}, {0, 0, 0}, {1, 1, 1}, {0.25, 0, 0},
-                                                   renderer.loadMesh("resources/teapot.obj"));
+  //renderer::Entity &teapot = renderer.createEntity({1, 3, 1}, {0, 0, 0}, {0.5, 0.5, 0.5}, {0.25, 0, 0},
+  //                                                 renderer.loadMesh("resources/teapot.obj"));
 
-  renderer::Entity &teapot2 = renderer.createEntity({5, 3, 5}, {0, 0, 0}, {1, 1, 1}, {0, 0, 0.25},
-                                                   renderer.loadMesh("resources/teapot.obj"));
+  renderer::Entity &cube = renderer.createEntity({3, 3, 1}, {0, 0, 0}, {3, 3, 3}, {0, 0, 0.25},
+                                                   renderer.loadMesh("resources/cube.obj"));
 
 //  for (int i = 0; i < N; ++i) {
 //    printf("Sample point %d: %lf, %lf, %lf\n", i, samplePoints[i].x, samplePoints[i].y, samplePoints[i].z);
 //  }
 //  int i = 0;
+  auto time = std::chrono::high_resolution_clock::now();
+
   while(1) {
     displayer::Color outputBuffer[294];
     // To modify after creation:
 //    teapot.position.z = ((float) i - 30) / 10;
 //    printf("z: %f\n", ((float) i - 30) / 10);
 //    i = (i + 10) % 60;
-    teapot.scale.x = 0.5;
-    teapot.scale.y = 0.5;
-    teapot.scale.z = 0.5;
 
-    teapot2.scale.x = 0.5;
-    teapot2.scale.y = 0.5;
-    teapot2.scale.z = 0.5;
+    //teapot2.scale.x = 0.5;
+    //teapot2.scale.y = 0.5;
+    //teapot2.scale.z = 0.5;
+    auto now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> difference = now - time;
+    time = now;
 
-    float modifier = Joystick_getState(AXIS, L_STICK_X)/(float)3000;
-    teapot.rotation.y = modifier;
-    teapot.color.g = 0.175;
-    teapot2.color.g = 0.175;
+    float modifierX = Joystick_getState(AXIS, L_STICK_X)/(float)32500;
+    if (abs(modifierX) < 0.4)
+      modifierX = 0;
+    float modifierY = Joystick_getState(AXIS, L_STICK_Y)/(float)32500;
+    //printf("modifierx: %f\n", modifierX);
+    //printf("modifiery: %f\n", modifierY);
+    //printf("difference: %f\n", difference.count());
+    cube.position.x += modifierX * difference.count() / 500;
+    cube.position.y -= modifierY * difference.count() / 500;
+    cube.color.g = 0.175;
+    //teapot2.color.g = 0.175;
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
+    float sleep_time = 0;
+    if (difference.count() < 16.67*2) {
+      sleep_time = 16.67-difference.count();
+    }
+
+    timespec sleepValue = {0};
+    sleepValue.tv_nsec = sleep_time * 1000000L;
+    printf("sleeping for %lf\n", sleep_time);
+    nanosleep(&sleepValue, NULL);
   }
 
   Joystick_cleanUp();

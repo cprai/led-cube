@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/util.c.o"
   "CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/pru.c.o"
   "CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/ledscape.c.o"
+  "CMakeFiles/led-testing.dir/__/__/controller/src/controller/joystick.c.o"
   "../../bin/applications/led-testing/led-testing.pdb"
   "../../bin/applications/led-testing/led-testing"
 )

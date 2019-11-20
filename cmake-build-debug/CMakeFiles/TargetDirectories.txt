@@ -1,7 +1,16 @@
 /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles/edit_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/CMakeFiles/rebuild_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/CMakeFiles/edit_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/CMakeFiles/rebuild_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/CMakeFiles/edit_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/controller/CMakeFiles/rebuild_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/controller/CMakeFiles/edit_cache.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/applications/CMakeFiles/rebuild_cache.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/applications/CMakeFiles/edit_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/applications/controller-testing/CMakeFiles/rebuild_cache.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/applications/controller-testing/CMakeFiles/controller-testing.dir
+/www/classes/433/work/project/led-cube/cmake-build-debug/applications/controller-testing/CMakeFiles/edit_cache.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/CMakeFiles/rebuild_cache.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/CMakeFiles/led-testing.dir
 /www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/CMakeFiles/edit_cache.dir

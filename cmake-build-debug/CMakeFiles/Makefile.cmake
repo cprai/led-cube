@@ -31,11 +31,15 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/clion-2019.2.2/bin/cmake/linux/share/cmake-3.14/Modules/ProcessorCount.cmake"
   "../CMakeLists.txt"
   "../applications/CMakeLists.txt"
+  "../applications/controller-testing/CMakeLists.txt"
   "../applications/led-testing/CMakeLists.txt"
   "../applications/slice/CMakeLists.txt"
   "CMakeFiles/3.14.5/CMakeCCompiler.cmake"
   "CMakeFiles/3.14.5/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.14.5/CMakeSystem.cmake"
+  "../controller/CMakeLists.txt"
+  "../controller/src/CMakeLists.txt"
+  "../controller/src/controller/CMakeLists.txt"
   "../displayer/CMakeLists.txt"
   "../displayer/src/CMakeLists.txt"
   "../displayer/src/displayer/CMakeLists.txt"
@@ -55,7 +59,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "controller/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "controller/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "controller/src/controller/CMakeFiles/CMakeDirectoryInformation.cmake"
   "applications/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "applications/controller-testing/CMakeFiles/CMakeDirectoryInformation.cmake"
   "applications/led-testing/CMakeFiles/CMakeDirectoryInformation.cmake"
   "applications/slice/CMakeFiles/CMakeDirectoryInformation.cmake"
   "displayer/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -70,6 +78,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "applications/controller-testing/CMakeFiles/controller-testing.dir/DependInfo.cmake"
   "applications/led-testing/CMakeFiles/led-testing.dir/DependInfo.cmake"
   "applications/slice/CMakeFiles/slice.dir/DependInfo.cmake"
   )

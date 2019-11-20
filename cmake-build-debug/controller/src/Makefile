@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles /www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/CMakeFiles/progress.marks
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 controller/src/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 controller/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,57 +97,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 controller/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 controller/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named controller-testing
-
-# Build rule for target.
-controller-testing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller-testing
-.PHONY : controller-testing
-
-# fast build rule for target.
-controller-testing/fast:
-	$(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/build
-.PHONY : controller-testing/fast
-
-#=============================================================================
-# Target rules for targets named led-testing
-
-# Build rule for target.
-led-testing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 led-testing
-.PHONY : led-testing
-
-# fast build rule for target.
-led-testing/fast:
-	$(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/build
-.PHONY : led-testing/fast
-
-#=============================================================================
-# Target rules for targets named slice
-
-# Build rule for target.
-slice: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 slice
-.PHONY : slice
-
-# fast build rule for target.
-slice/fast:
-	$(MAKE) -f applications/slice/CMakeFiles/slice.dir/build.make applications/slice/CMakeFiles/slice.dir/build
-.PHONY : slice/fast
 
 # Help Target
 help:
@@ -157,9 +118,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... controller-testing"
-	@echo "... led-testing"
-	@echo "... slice"
 .PHONY : help
 
 
@@ -171,6 +129,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

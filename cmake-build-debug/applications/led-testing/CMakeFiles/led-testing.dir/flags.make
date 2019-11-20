@@ -7,11 +7,11 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/www/classes/433/work/project/led-cube/displayer/src -I/www/classes/433/work/project/led-cube/renderer/src 
+C_INCLUDES = -I/www/classes/433/work/project/led-cube/displayer/src -I/www/classes/433/work/project/led-cube/controller/src -I/www/classes/433/work/project/led-cube/renderer/src 
 
 CXX_FLAGS =  -Wall -O3 -fno-rtti -O0 -g -fno-omit-frame-pointer   -std=gnu++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/www/classes/433/work/project/led-cube/displayer/src -I/www/classes/433/work/project/led-cube/renderer/src 
+CXX_INCLUDES = -I/www/classes/433/work/project/led-cube/displayer/src -I/www/classes/433/work/project/led-cube/controller/src -I/www/classes/433/work/project/led-cube/renderer/src 
 

@@ -146,9 +146,9 @@ public:
   }
 
   void display(Color outputBuffer[LEDCount]) {
-    std::cout << "Call to display module" << std::endl;
+    //std::cout << "Call to display module" << std::endl;
 
-    std::cout << "Recieved output buffer:" << std::endl;
+    //std::cout << "Recieved output buffer:" << std::endl;
 
 //    uint32_t interfaceBuffer[LEDCount];
 
@@ -171,7 +171,7 @@ public:
 
     color_channel_order_t color_channel_order = g_server_config.color_channel_order;
 
-    printf("Current strip: %d\n", curr_strip);
+    //printf("Current strip: %d\n", curr_strip);
     for (uint32_t led_index = 0; led_index < LEDCount; ++led_index) {
       ledscape_pixel_t *const pixel_out = &frame[led_index].strip[26];
 

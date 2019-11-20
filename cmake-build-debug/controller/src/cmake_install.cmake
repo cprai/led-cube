@@ -1,4 +1,4 @@
-# Install script for directory: /www/classes/433/work/project/led-cube
+# Install script for directory: /www/classes/433/work/project/led-cube/controller/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,20 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/www/classes/433/work/project/led-cube/cmake-build-debug/controller/cmake_install.cmake")
-  include("/www/classes/433/work/project/led-cube/cmake-build-debug/applications/cmake_install.cmake")
-  include("/www/classes/433/work/project/led-cube/cmake-build-debug/displayer/cmake_install.cmake")
-  include("/www/classes/433/work/project/led-cube/cmake-build-debug/renderer/cmake_install.cmake")
+  include("/www/classes/433/work/project/led-cube/cmake-build-debug/controller/src/controller/cmake_install.cmake")
 
 endif()
 
-if(CMAKE_INSTALL_COMPONENT)
-  set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
-else()
-  set(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
-endif()
-
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/www/classes/433/work/project/led-cube/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")

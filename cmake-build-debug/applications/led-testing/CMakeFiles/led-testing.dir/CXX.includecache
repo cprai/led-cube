@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../controller/src/controller/joystick.h
+
 ../displayer/src/displayer/color.h
 
 ../displayer/src/displayer/displayer.h
@@ -135,6 +137,8 @@ renderer/interpolator.h
 ../renderer/src/renderer/renderer/interpolator.h
 
 ../renderer/src/renderer/renderer.h
+list
+-
 cmath
 -
 vector
@@ -163,6 +167,8 @@ renderer/ledLayout.h
 ../renderer/src/renderer/renderer/ledLayout.h
 
 /www/classes/433/work/project/led-cube/applications/led-testing/main.cpp
+controller/joystick.h
+/www/classes/433/work/project/led-cube/applications/led-testing/controller/joystick.h
 geometry/vector3.h
 /www/classes/433/work/project/led-cube/applications/led-testing/geometry/vector3.h
 renderer/renderer.h
@@ -171,6 +177,8 @@ displayer/color.h
 /www/classes/433/work/project/led-cube/applications/led-testing/displayer/color.h
 displayer/displayer.h
 /www/classes/433/work/project/led-cube/applications/led-testing/displayer/displayer.h
+chrono
+-
 iostream
 -
 fstream

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles /www/classes/433/work/project/led-cube/cmake-build-debug/applications/led-testing/CMakeFiles/progress.marks
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/led-testing/all
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles /www/classes/433/work/project/led-cube/cmake-build-debug/applications/controller-testing/CMakeFiles/progress.marks
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/controller-testing/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /www/classes/433/work/project/led-cube/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/led-testing/clean
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/controller-testing/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,12 +97,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/led-testing/preinstall
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/controller-testing/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/led-testing/preinstall
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/controller-testing/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-applications/led-testing/CMakeFiles/led-testing.dir/rule:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/led-testing/CMakeFiles/led-testing.dir/rule
-.PHONY : applications/led-testing/CMakeFiles/led-testing.dir/rule
+applications/controller-testing/CMakeFiles/controller-testing.dir/rule:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 applications/controller-testing/CMakeFiles/controller-testing.dir/rule
+.PHONY : applications/controller-testing/CMakeFiles/controller-testing.dir/rule
 
 # Convenience name for target.
-led-testing: applications/led-testing/CMakeFiles/led-testing.dir/rule
+controller-testing: applications/controller-testing/CMakeFiles/controller-testing.dir/rule
 
-.PHONY : led-testing
+.PHONY : controller-testing
 
 # fast build rule for target.
-led-testing/fast:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/build
-.PHONY : led-testing/fast
+controller-testing/fast:
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/build
+.PHONY : controller-testing/fast
 
 __/__/controller/src/controller/joystick.o: __/__/controller/src/controller/joystick.c.o
 
@@ -131,7 +131,7 @@ __/__/controller/src/controller/joystick.o: __/__/controller/src/controller/joys
 
 # target to build an object file
 __/__/controller/src/controller/joystick.c.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/controller/src/controller/joystick.c.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/controller/src/controller/joystick.c.o
 .PHONY : __/__/controller/src/controller/joystick.c.o
 
 __/__/controller/src/controller/joystick.i: __/__/controller/src/controller/joystick.c.i
@@ -140,7 +140,7 @@ __/__/controller/src/controller/joystick.i: __/__/controller/src/controller/joys
 
 # target to preprocess a source file
 __/__/controller/src/controller/joystick.c.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/controller/src/controller/joystick.c.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/controller/src/controller/joystick.c.i
 .PHONY : __/__/controller/src/controller/joystick.c.i
 
 __/__/controller/src/controller/joystick.s: __/__/controller/src/controller/joystick.c.s
@@ -149,7 +149,7 @@ __/__/controller/src/controller/joystick.s: __/__/controller/src/controller/joys
 
 # target to generate assembly for a file
 __/__/controller/src/controller/joystick.c.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/controller/src/controller/joystick.c.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/controller/src/controller/joystick.c.s
 .PHONY : __/__/controller/src/controller/joystick.c.s
 
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.o: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
@@ -158,7 +158,7 @@ __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.o: __/__/disp
 
 # target to build an object file
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
 .PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.o
 
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.i: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
@@ -167,7 +167,7 @@ __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.i: __/__/disp
 
 # target to preprocess a source file
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
 .PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.i
 
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.s: __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
@@ -176,7 +176,7 @@ __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.s: __/__/disp
 
 # target to generate assembly for a file
 __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
 .PHONY : __/__/displayer/src/displayer/am335x/app_loader/interface/prussdrv.c.s
 
 __/__/displayer/src/displayer/ledscape.o: __/__/displayer/src/displayer/ledscape.c.o
@@ -185,7 +185,7 @@ __/__/displayer/src/displayer/ledscape.o: __/__/displayer/src/displayer/ledscape
 
 # target to build an object file
 __/__/displayer/src/displayer/ledscape.c.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/ledscape.c.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/ledscape.c.o
 .PHONY : __/__/displayer/src/displayer/ledscape.c.o
 
 __/__/displayer/src/displayer/ledscape.i: __/__/displayer/src/displayer/ledscape.c.i
@@ -194,7 +194,7 @@ __/__/displayer/src/displayer/ledscape.i: __/__/displayer/src/displayer/ledscape
 
 # target to preprocess a source file
 __/__/displayer/src/displayer/ledscape.c.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/ledscape.c.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/ledscape.c.i
 .PHONY : __/__/displayer/src/displayer/ledscape.c.i
 
 __/__/displayer/src/displayer/ledscape.s: __/__/displayer/src/displayer/ledscape.c.s
@@ -203,7 +203,7 @@ __/__/displayer/src/displayer/ledscape.s: __/__/displayer/src/displayer/ledscape
 
 # target to generate assembly for a file
 __/__/displayer/src/displayer/ledscape.c.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/ledscape.c.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/ledscape.c.s
 .PHONY : __/__/displayer/src/displayer/ledscape.c.s
 
 __/__/displayer/src/displayer/pru.o: __/__/displayer/src/displayer/pru.c.o
@@ -212,7 +212,7 @@ __/__/displayer/src/displayer/pru.o: __/__/displayer/src/displayer/pru.c.o
 
 # target to build an object file
 __/__/displayer/src/displayer/pru.c.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/pru.c.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/pru.c.o
 .PHONY : __/__/displayer/src/displayer/pru.c.o
 
 __/__/displayer/src/displayer/pru.i: __/__/displayer/src/displayer/pru.c.i
@@ -221,7 +221,7 @@ __/__/displayer/src/displayer/pru.i: __/__/displayer/src/displayer/pru.c.i
 
 # target to preprocess a source file
 __/__/displayer/src/displayer/pru.c.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/pru.c.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/pru.c.i
 .PHONY : __/__/displayer/src/displayer/pru.c.i
 
 __/__/displayer/src/displayer/pru.s: __/__/displayer/src/displayer/pru.c.s
@@ -230,7 +230,7 @@ __/__/displayer/src/displayer/pru.s: __/__/displayer/src/displayer/pru.c.s
 
 # target to generate assembly for a file
 __/__/displayer/src/displayer/pru.c.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/pru.c.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/pru.c.s
 .PHONY : __/__/displayer/src/displayer/pru.c.s
 
 __/__/displayer/src/displayer/util.o: __/__/displayer/src/displayer/util.c.o
@@ -239,7 +239,7 @@ __/__/displayer/src/displayer/util.o: __/__/displayer/src/displayer/util.c.o
 
 # target to build an object file
 __/__/displayer/src/displayer/util.c.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/util.c.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/util.c.o
 .PHONY : __/__/displayer/src/displayer/util.c.o
 
 __/__/displayer/src/displayer/util.i: __/__/displayer/src/displayer/util.c.i
@@ -248,7 +248,7 @@ __/__/displayer/src/displayer/util.i: __/__/displayer/src/displayer/util.c.i
 
 # target to preprocess a source file
 __/__/displayer/src/displayer/util.c.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/util.c.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/util.c.i
 .PHONY : __/__/displayer/src/displayer/util.c.i
 
 __/__/displayer/src/displayer/util.s: __/__/displayer/src/displayer/util.c.s
@@ -257,7 +257,7 @@ __/__/displayer/src/displayer/util.s: __/__/displayer/src/displayer/util.c.s
 
 # target to generate assembly for a file
 __/__/displayer/src/displayer/util.c.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/__/__/displayer/src/displayer/util.c.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/__/__/displayer/src/displayer/util.c.s
 .PHONY : __/__/displayer/src/displayer/util.c.s
 
 main.o: main.cpp.o
@@ -266,7 +266,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/main.cpp.o
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -275,7 +275,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/main.cpp.i
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -284,7 +284,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/led-testing/CMakeFiles/led-testing.dir/build.make applications/led-testing/CMakeFiles/led-testing.dir/main.cpp.s
+	cd /www/classes/433/work/project/led-cube/cmake-build-debug && $(MAKE) -f applications/controller-testing/CMakeFiles/controller-testing.dir/build.make applications/controller-testing/CMakeFiles/controller-testing.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -294,7 +294,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... led-testing"
+	@echo "... controller-testing"
 	@echo "... edit_cache"
 	@echo "... __/__/controller/src/controller/joystick.o"
 	@echo "... __/__/controller/src/controller/joystick.i"
