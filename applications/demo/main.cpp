@@ -2,12 +2,16 @@ extern "C" {
 #include "controller/joystick.h"
 }
 
+void objects();
 void pong();
 
 int main() {
   Joystick_init();
 
-  pong();
+  while(1) {
+    objects();
+    pong();
+  }
 
   Joystick_cleanUp();
 }
