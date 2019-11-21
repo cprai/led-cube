@@ -131,7 +131,12 @@ int main() {
   //renderer::Entity &teapot = renderer.createEntity({1, 3, 1}, {0, 0, 0}, {0.5, 0.5, 0.5}, {0.25, 0, 0},
   //                                                 renderer.loadMesh("resources/teapot.obj"));
 
-  renderer::Entity &cube = renderer.createEntity({3, 3, 1}, {0, 0, 0}, {3, 3, 3}, {0, 0, 0.25},
+  // px,py,pz, rx,ry,rz, sx,sy,sz
+  float cubeValues[] = {3, 3, 1, 0, 0, 0, 2, 2, 2};
+  renderer::Entity &cube = renderer.createEntity({cubeValues[0], cubeValues[1], cubeValues[2]},
+          {cubeValues[3], cubeValues[4], cubeValues[5]},
+          {cubeValues[6], cubeValues[7], cubeValues[8]},
+          {0, 0, 0.25},
                                                    renderer.loadMesh("resources/cube.obj"));
 
 //  for (int i = 0; i < N; ++i) {
@@ -139,43 +144,143 @@ int main() {
 //  }
 //  int i = 0;
   auto time = std::chrono::high_resolution_clock::now();
+  // TRUE: position mode, FALSE: rotation mode
+  bool isPositionMode = false;
+  int lastRightBumperValue = 0;
+  float dimness = 0.175;
+  float stickThreshold = 0.3;
+  float triggerThreshold = 0.3;
 
-  while(1) {
+
+  while(true) {
     displayer::Color outputBuffer[294];
-    // To modify after creation:
-//    teapot.position.z = ((float) i - 30) / 10;
-//    printf("z: %f\n", ((float) i - 30) / 10);
-//    i = (i + 10) % 60;
-
-    //teapot2.scale.x = 0.5;
-    //teapot2.scale.y = 0.5;
-    //teapot2.scale.z = 0.5;
     auto now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> difference = now - time;
     time = now;
 
-    float modifierX = Joystick_getState(AXIS, L_STICK_X)/(float)32500;
-    if (abs(modifierX) < 0.4)
-      modifierX = 0;
-    float modifierY = Joystick_getState(AXIS, L_STICK_Y)/(float)32500;
-    //printf("modifierx: %f\n", modifierX);
-    //printf("modifiery: %f\n", modifierY);
-    //printf("difference: %f\n", difference.count());
-    cube.position.x += modifierX * difference.count() / 500;
-    cube.position.y -= modifierY * difference.count() / 500;
-    cube.color.g = 0.175;
+    // Xbox button, exit program
+    //int homeBtn = Joystick_getState(BUTTON, HOME);
+    //if (homeBtn) {
+    //  break;
+    //}
+
+    // Right bumper, switch between modes
+    int rightBumperBtn = Joystick_getState(BUTTON, R_BUMPER);
+    if (rightBumperBtn) {
+      if (lastRightBumperValue == 0) {
+        isPositionMode = !isPositionMode;
+      }
+    }
+    lastRightBumperValue = rightBumperBtn;
+
+    // Back Button, reset position
+    int backBtn = Joystick_getState(BUTTON, SELECT);
+    if (backBtn) {
+      cube.position.x = cubeValues[0];
+      cube.position.y = cubeValues[1];
+      cube.position.z = cubeValues[2];
+      cube.rotation.x = cubeValues[3];
+      cube.rotation.y = cubeValues[4];
+      cube.rotation.z = cubeValues[5];
+      cube.scale.x = cubeValues[6];
+      cube.scale.y = cubeValues[7];
+      cube.scale.z = cubeValues[8];
+    }
+
+    // COLORS :)
+    // RED
+    int bBtn = Joystick_getState(BUTTON, B);
+    if (bBtn) {
+      cube.color.r = 1 * dimness;
+      cube.color.g = 0 * dimness;
+      cube.color.b = 0 * dimness;
+    }
+    // GREEN
+    int aBtn = Joystick_getState(BUTTON, A);
+    if (aBtn) {
+      cube.color.r = 0 * dimness;
+      cube.color.g = 1 * dimness;
+      cube.color.b = 0 * dimness;
+    }
+    // BLUE
+    int xBtn = Joystick_getState(BUTTON, X);
+    if (xBtn) {
+      cube.color.r = 0 * dimness;
+      cube.color.g = 0 * dimness;
+      cube.color.b = 1 * dimness;
+    }
+    // YELLOW
+    int yBtn = Joystick_getState(BUTTON, Y);
+    if (yBtn) {
+      cube.color.r = 1 * dimness;
+      cube.color.g = 1 * dimness;
+      cube.color.b = 0 * dimness;
+    }
+
+    // Load joysticks values
+   float lStickX = Joystick_getState(AXIS, L_STICK_X) / (float) 32500;
+    if (abs(lStickX) < stickThreshold)
+      lStickX = 0;
+    float lStickY = Joystick_getState(AXIS, L_STICK_Y) / (float) 32500;
+    if (abs(lStickY) < stickThreshold)
+      lStickY = 0;
+    float rStickY = Joystick_getState(AXIS, R_STICK_Y) / (float) 32500;
+    if (abs(rStickY) < stickThreshold)
+      rStickY = 0;
+    float rStickX = Joystick_getState(AXIS, R_STICK_X) / (float) 32500;
+    if (abs(rStickX) < stickThreshold)
+      rStickX = 0;
+    printf("modifierx: %f\n", lStickX);
+    printf("modifiery: %f\n", lStickY);
+    printf("modifierz: %f\n", rStickY);
+
+    if (isPositionMode) {
+      // Position
+      //printf("difference: %f\n", difference.count());
+      cube.position.x += lStickX * difference.count() / 500;
+      cube.position.y -= lStickY * difference.count() / 500;
+      cube.position.z += rStickY * difference.count() / 500;
+    } else {
+      // Rotation
+      cube.rotation.x += lStickY * difference.count() / 500;
+      cube.rotation.y += lStickX * difference.count() / 500;
+      cube.rotation.z += rStickX * difference.count() / 500;
+    }
+
+    // Triggers (scale)
+    float leftTrigger = Joystick_getState(AXIS, L_TRIGGER);
+    leftTrigger = leftTrigger != 0 ? (leftTrigger + 32500) / (float) 32500 : 0;
+    if (abs(leftTrigger) < triggerThreshold)
+      leftTrigger = 0;
+    float rightTrigger = Joystick_getState(AXIS, R_TRIGGER);
+    rightTrigger = rightTrigger != 0 ? (rightTrigger + 32500) / (float) 32500 : 0;
+    if (abs(rightTrigger) < triggerThreshold)
+      rightTrigger = 0;
+    printf("Left trigger: %f\n", leftTrigger);
+    printf("Right trigger: %f\n", rightTrigger);
+    if (leftTrigger) {
+      cube.scale.x -= leftTrigger*difference.count()/500;
+      cube.scale.y -= leftTrigger*difference.count()/500;
+      cube.scale.z -= leftTrigger*difference.count()/500;
+    }
+    if (rightTrigger) {
+      cube.scale.x += rightTrigger*difference.count()/500;
+      cube.scale.y += rightTrigger*difference.count()/500;
+      cube.scale.z += rightTrigger*difference.count()/500;
+    }
+
     //teapot2.color.g = 0.175;
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
     float sleep_time = 0;
-    if (difference.count() < 16.67*2) {
-      sleep_time = 16.67-difference.count();
+    if (difference.count() < 20) {
+      sleep_time = 20-difference.count();
     }
 
     timespec sleepValue = {0};
     sleepValue.tv_nsec = sleep_time * 1000000L;
-    printf("sleeping for %lf\n", sleep_time);
+    printf("difference: %fms, sleeping for %f\n", difference.count(), sleep_time);
     nanosleep(&sleepValue, NULL);
   }
 
