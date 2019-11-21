@@ -30,17 +30,17 @@ void pong() {
 
   auto& paddle = renderer.createEntity(
     {0, 0, 5},
-    {0, 0, 0},
+    {0.5, 0.5, 0.5},
     {2*PADDLE_RADIUS, 2*PADDLE_RADIUS, 0},
-    {0, 0, 1},
+    {0, 0, 0.0175},
     cubeMesh
   );
 
   auto& ball = renderer.createEntity(
     {0, 0, 5},
     {0, 0, 0},
-    {1, 1, 1},
-    {0, 1, 0},
+    {0.5, 0.5, 0.5},
+    {0, 0.0175, 0},
     cubeMesh
   );
 
