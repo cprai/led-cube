@@ -25,9 +25,8 @@ extern "C" {
 #define BALL_SPEED 0.0000025
 #define PADDLE_SPEED 0.00000000025
 
-void pong() {
-  renderer::Renderer renderer("resources/cube.map", 0.3, 0.6);
-  displayer::Displayer<N> displayer;
+void pong(displayer::Displayer<N> &displayer) {
+  renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
 
   auto& cubeMesh = renderer.loadMesh("resources/cube.obj");
 
@@ -50,10 +49,17 @@ void pong() {
 
   renderer::Vector3 ballVelocity = {1, 1, -1};
 
-  float delta;
+  float delta = 0;
 
   while (1) {
+    // Xbox button, exit program
+    int homeBtn = Joystick_getState(BUTTON, HOME);
+    if (homeBtn) {
+      break;
+    }
+
     printf("paddle x: %f, paddle y: %f, paddle z: %f\n", paddle.position.x, paddle.position.y, paddle.position.z);
+    printf("ball x: %f, ball y: %f, ball z: %f\n", ball.position.x, ball.position.y, ball.position.z);
     displayer::Color outputBuffer[N];
     ball.position = ball.position + ballVelocity*delta*BALL_SPEED;
 

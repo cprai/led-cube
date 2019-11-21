@@ -19,9 +19,8 @@ extern "C" {
 #define N 294
 
 
-void objects() {
+void objects(displayer::Displayer<N> &displayer) {
   renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
-  displayer::Displayer<N> displayer;
 
   // Arguments are {position}, {rotation}, {scale}
   //renderer::Entity &teapot = renderer.createEntity({1, 3, 1}, {0, 0, 0}, {0.5, 0.5, 0.5}, {0.25, 0, 0},
@@ -68,10 +67,10 @@ void objects() {
     time = now;
 
     // Xbox button, exit program
-    //int homeBtn = Joystick_getState(BUTTON, HOME);
-    //if (homeBtn) {
-    //  break;
-    //}
+    int homeBtn = Joystick_getState(BUTTON, HOME);
+    if (homeBtn) {
+      break;
+    }
 
     // Left bumper, switch between objects
     int leftBumperBtn = Joystick_getState(BUTTON, L_BUMPER);
