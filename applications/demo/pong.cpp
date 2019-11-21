@@ -18,9 +18,10 @@ extern "C" {
 
 #define N 294
 
-#define PADDLE_RADIUS 3
+#define PADDLE_RADIUS 1
 
-#define BALL_SPEED 0.00001
+#define BALL_SPEED 0.000001
+#define PADDLE_SPEED 0.00001
 
 void pong() {
   renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
@@ -29,7 +30,7 @@ void pong() {
   auto& cubeMesh = renderer.loadMesh("resources/cube.obj");
 
   auto& paddle = renderer.createEntity(
-    {0, 0, 5},
+    {2, 2, 5},
     {0, 0, 0},
     {2*PADDLE_RADIUS, 2*PADDLE_RADIUS, 0},
     {0, 0, 1},
@@ -66,12 +67,12 @@ void pong() {
 
     renderer::Vector3 controllerInput = {Joystick_getState(AXIS, L_STICK_X), Joystick_getState(AXIS, L_STICK_Y), 0.0f};
 
-    paddle.position = paddle.position + controllerInput*delta;
-
     if (paddle.position.x <= 0.0f) delta = 0.0f;
     if (paddle.position.x >= 6.0f) delta = 0.0f;
     if (paddle.position.y <= 0.0f) delta = 0.0f;
     if (paddle.position.y >= 6.0f) delta = 0.0f;
+
+    paddle.position = paddle.position + controllerInput*delta*PADDLE_SPEED;
 
     auto time1 = std::chrono::high_resolution_clock::now();
 
