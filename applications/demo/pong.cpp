@@ -22,11 +22,11 @@ extern "C" {
 
 #define PADDLE_RADIUS 1
 
-#define BALL_SPEED 0.000001
-#define PADDLE_SPEED 0.000000001
+#define BALL_SPEED 0.0000025
+#define PADDLE_SPEED 0.00000000025
 
 void pong() {
-  renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
+  renderer::Renderer renderer("resources/cube.map", 0.3, 0.6);
   displayer::Displayer<N> displayer;
 
   auto& cubeMesh = renderer.loadMesh("resources/cube.obj");
@@ -70,15 +70,15 @@ void pong() {
 
       auto linearDistance = distance.magnitude();
 
-      if (linearDistance > PADDLE_RADIUS) {
-        ball.color = {1.0f, 0.0f, 0.0f};
+      if (linearDistance > 2*PADDLE_RADIUS) {
+        ball.color = {0.0175f, 0.0f, 0.0f};
       }
       else {
-        ball.color = {0.0f, 1.0f, 0.0f};
+        ball.color = {0.0f, 0.0175f, 0.0f};
       }
     }
     else {
-      ball.color = {0.0f, 1.0f, 0.0f};
+      ball.color = {0.0f, 0.0175f, 0.0f};
     }
 
     renderer::Vector3 controllerInput = {Joystick_getState(AXIS, L_STICK_X), -Joystick_getState(AXIS, L_STICK_Y), 0.0f};
