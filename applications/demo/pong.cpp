@@ -18,7 +18,9 @@ extern "C" {
 
 #define N 294
 
-#define PADDLE_RADIUS 0.3
+#define DEADZONE 10000
+
+#define PADDLE_RADIUS 1
 
 #define BALL_SPEED 0.000001
 #define PADDLE_SPEED 0.000000001
@@ -32,7 +34,7 @@ void pong() {
   auto& paddle = renderer.createEntity(
     {2, 2, 4},
     {0.5, 0.5, 0.5},
-    {2*PADDLE_RADIUS, 2*PADDLE_RADIUS, 0},
+    {PADDLE_RADIUS, PADDLE_RADIUS, 0},
     {0, 0, 0.0175},
     cubeMesh
   );
@@ -62,11 +64,24 @@ void pong() {
     if (ball.position.z <= 0.0f) ballVelocity.z = +1.0f*std::abs(ballVelocity.z);
     if (ball.position.z >= 5.0f) ballVelocity.z = -1.0f*std::abs(ballVelocity.z);
     
-    if (ball.position.z >= 5.0f) {
+    if (ball.position.z >= 4.8f) {
+      auto distance = paddle.position - ball.position;
+      distance.z = 0;
 
+      auto linearDistance = distance.magnitude();
+
+      if (linearDistance > PADDLE_RADIUS) {
+        ball.color = {1.0f, 0.0f, 0.0f};
+      }
+      else {
+        ball.color = {0.0f, 1.0f, 0.0f};
+      }
     }
 
     renderer::Vector3 controllerInput = {Joystick_getState(AXIS, L_STICK_X), -Joystick_getState(AXIS, L_STICK_Y), 0.0f};
+
+    if (controllerInput.x < DEADZONE) controllerInput.x = 0;
+    if (controllerInput.y < DEADZONE) controllerInput.y = 0;
 
     if (paddle.position.x < 0.0f) delta = 0.0f, paddle.position.x = 0.0f;
     if (paddle.position.x > 6.0f) delta = 0.0f, paddle.position.x = 6.0f;
