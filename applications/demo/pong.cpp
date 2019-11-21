@@ -20,6 +20,8 @@ extern "C" {
 
 #define PADDLE_RADIUS 3
 
+#define BALL_SPEED 0.00001
+
 void pong() {
   renderer::Renderer renderer("resources/cube.map", 0.1, 0.5);
   displayer::Displayer<N> displayer;
@@ -42,20 +44,14 @@ void pong() {
     cubeMesh
   );
 
-  displayer::Color outputBuffer[N];
 
   renderer::Vector3 ballVelocity = {1, 1, -1};
 
-  auto time1 = std::chrono::high_resolution_clock::now();
-
-  renderer.render<N>(outputBuffer);
-  displayer.display(outputBuffer);
-
-  auto time2 = std::chrono::high_resolution_clock::now();
-  auto delta = (time2 - time1).count()/1000.0f;
+  float delta;
 
   while (1) {
-    ball.position = ball.position + ballVelocity*delta;
+    displayer::Color outputBuffer[N];
+    ball.position = ball.position + ballVelocity*delta*BALL_SPEED;
 
     if (ball.position.x <= 0.0f) ballVelocity.x = +1.0f*std::abs(ballVelocity.x);
     if (ball.position.x >= 6.0f) ballVelocity.x = -1.0f*std::abs(ballVelocity.x);
@@ -68,14 +64,21 @@ void pong() {
 
     }
 
-    renderer::Vector3 controller = {Joystick_getState(AXIS, L_STICK_X), Joystick_getState(AXIS, L_STICK_Y), 0.0f};
+    renderer::Vector3 controllerInput = {Joystick_getState(AXIS, L_STICK_X), Joystick_getState(AXIS, L_STICK_Y), 0.0f};
 
-    time1 = std::chrono::high_resolution_clock::now();
+    paddle.position = paddle.position + controllerInput*delta;
+
+    if (paddle.position.x <= 0.0f) delta = 0.0f;
+    if (paddle.position.x >= 6.0f) delta = 0.0f;
+    if (paddle.position.y <= 0.0f) delta = 0.0f;
+    if (paddle.position.y >= 6.0f) delta = 0.0f;
+
+    auto time1 = std::chrono::high_resolution_clock::now();
 
     renderer.render<N>(outputBuffer);
     displayer.display(outputBuffer);
 
-    time2 = std::chrono::high_resolution_clock::now();
+    auto time2 = std::chrono::high_resolution_clock::now();
     delta = (time2 - time1).count()/1000.0f;
   }
 }
