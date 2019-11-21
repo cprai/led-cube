@@ -1,5 +1,5 @@
 extern "C" {
-//#include "controller/joystick.h"
+#include "controller/joystick.h"
 }
 
 #include "geometry/vector3.h"
@@ -67,6 +67,8 @@ void pong() {
     if (ball.position.z >= 5.0f) {
 
     }
+
+    renderer::Vector3 controller = {Joystick_getState(AXIS, L_STICK_X), Joystick_getState(AXIS, L_STICK_Y), 0.0f};
 
     time1 = std::chrono::high_resolution_clock::now();
 
