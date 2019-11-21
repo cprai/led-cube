@@ -77,11 +77,14 @@ void pong() {
         ball.color = {0.0f, 1.0f, 0.0f};
       }
     }
+    else {
+      ball.color = {0.0f, 1.0f, 0.0f};
+    }
 
     renderer::Vector3 controllerInput = {Joystick_getState(AXIS, L_STICK_X), -Joystick_getState(AXIS, L_STICK_Y), 0.0f};
 
-    if (controllerInput.x < DEADZONE) controllerInput.x = 0;
-    if (controllerInput.y < DEADZONE) controllerInput.y = 0;
+    if (std::abs(controllerInput.x) < DEADZONE) controllerInput.x = 0;
+    if (std::abs(controllerInput.y) < DEADZONE) controllerInput.y = 0;
 
     if (paddle.position.x < 0.0f) delta = 0.0f, paddle.position.x = 0.0f;
     if (paddle.position.x > 6.0f) delta = 0.0f, paddle.position.x = 6.0f;
