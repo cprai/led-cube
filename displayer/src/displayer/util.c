@@ -1,5 +1,7 @@
 /** \file
  * Various utility functions
+ *
+ * https://github.com/Yona-Appletree/LEDscape
  */
 #include <stdio.h>
 #include <stdlib.h>

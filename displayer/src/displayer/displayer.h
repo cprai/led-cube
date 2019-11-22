@@ -1,3 +1,8 @@
+/**
+ * Our actual displayer class. Much of this code is taken from https://github.com/Yona-Appletree/LEDscape in opc-server.c
+ * But, a much simpler version, since we're just taking inputs from whoever calls this class.
+ *
+ */
 #pragma once
 
 #include <iostream>

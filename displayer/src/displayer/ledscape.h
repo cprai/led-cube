@@ -3,6 +3,8 @@
  *
  * Drives up to 32 ws281x LED strips using the PRU to have no CPU overhead.
  * Allows easy double buffering of frames.
+ *
+ * https://github.com/Yona-Appletree/LEDscape
  */
 
 #ifndef _ledscape_h_

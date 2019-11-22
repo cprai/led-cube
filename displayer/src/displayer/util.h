@@ -1,5 +1,7 @@
 /** \file
  * Utility functions.
+ *
+ * https://github.com/Yona-Appletree/LEDscape
  */
 #ifndef _util_h_
 #define _util_h_

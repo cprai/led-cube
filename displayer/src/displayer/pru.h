@@ -1,5 +1,6 @@
 /** \file
  * Simplified interface to the ARM PRU.
+ * https://github.com/Yona-Appletree/LEDscape
  *
  */
 #ifndef _pru_h_

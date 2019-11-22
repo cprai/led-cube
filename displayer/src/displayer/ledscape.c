@@ -1,6 +1,8 @@
 /** \file
  * Userspace interface to the WS281x LED strip driver.
  *
+ * https://github.com/Yona-Appletree/LEDscape
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>

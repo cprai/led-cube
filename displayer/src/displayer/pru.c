@@ -2,6 +2,8 @@
  * Userspace interface to the BeagleBone PRU.
  *
  * Wraps the prussdrv library in a sane interface.
+ *
+ * https://github.com/Yona-Appletree/LEDscape
  */
 #include <stdio.h>
 #include <stdlib.h>
