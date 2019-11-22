@@ -142,22 +142,10 @@ public:
   }
 
   ~Displayer() {
-//    pru_module_shutdown(pru_module);
+    ledscape_close(g_runtime_state.leds);
   }
 
   void display(Color outputBuffer[LEDCount]) {
-    //std::cout << "Call to display module" << std::endl;
-
-    //std::cout << "Recieved output buffer:" << std::endl;
-
-//    uint32_t interfaceBuffer[LEDCount];
-
-//    for (int i = 0; i < LEDCount; i++) {
-//      interfaceBuffer[i] = outputBuffer[i].asU32();
-//
-////      std::cout << std::hex << interfaceBuffer[i] << std::endl;
-//    }
-
     // Setup LEDscape for this frame
     uint8_t buffer_index = 0;
 
@@ -166,19 +154,15 @@ public:
     ledscape_frame_t *const frame = ledscape_frame(g_runtime_state.leds, buffer_index);
 
     // Build the render frame
-    uint32_t strip_count = g_server_config.used_strip_count;
-//    uint32_t leds_per_strip = g_runtime_state.leds_per_strip;
-
     color_channel_order_t color_channel_order = g_server_config.color_channel_order;
 
-    //printf("Current strip: %d\n", curr_strip);
+    // Set the color of each LED from the outputBuffer
     for (uint32_t led_index = 0; led_index < LEDCount; ++led_index) {
       ledscape_pixel_t *const pixel_out = &frame[led_index].strip[26];
 
       uint8_t current_r = outputBuffer[led_index].r * 255;
       uint8_t current_b = outputBuffer[led_index].b * 255;
       uint8_t current_g = outputBuffer[led_index].g * 255;
-//      printf("RGB: %d, %d, %d\n", current_r, current_g, current_b);
 
       uint8_t r = (uint8_t) current_r < 255 ? current_r : 255;
       uint8_t g = (uint8_t) current_g < 255 ? current_g : 255;
@@ -192,10 +176,11 @@ public:
               b
       );
     }
-    curr_strip = (curr_strip+1) % strip_count;
+
+    //// *Double buffer the calls* - this way we can spend time elsewhere while the frame is being sent to the LEDs by the PRU
     // Wait for previous send to complete if still in progress
     ledscape_wait(g_runtime_state.leds);
-    // Send the frame to the PRU
+    // Send this frame to the PRU
     ledscape_draw(g_runtime_state.leds, buffer_index);
 
   }

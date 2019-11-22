@@ -31,7 +31,7 @@ void pong(displayer::Displayer<N> &displayer) {
   auto& cubeMesh = renderer.loadMesh("resources/cube.obj");
 
   auto& paddle = renderer.createEntity(
-    {2, 2, 4},
+    {2, 2, 5},
     {0.5, 0.5, 0.5},
     {PADDLE_RADIUS, PADDLE_RADIUS, 0},
     {0, 0, 0.0175},
