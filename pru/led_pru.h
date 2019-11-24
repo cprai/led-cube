@@ -23,16 +23,22 @@ volatile register uint32_t __R30;
 volatile register uint32_t __R31;
 
 void send_zero(){
-  __R30 |= pin_8_11_bit;
+  __R30 ^= 0x1<<pin_8_11_bit;
   __delay_cycles(zero_on-1);
-  __R30 &= pin_8_11_bit;
+  __R30 ^= 0x1<<pin_8_11_bit;
   __delay_cycles(zero_off-2);
+
 }
 
 void send_one(){
-  __R30 |= pin_8_11_bit;
+  // __R30 ^= 0x1<<pin_8_11_bit;
+  // __delay_cycles(one_on-1);
+  // __R30 ^= 0x1<<pin_8_11_bit;
+  // __delay_cycles(one_off-2);
+
+  __R30 |= 0x1<<pin_8_11_bit;
   __delay_cycles(one_on-1);
-  __R30 &= pin_8_11_bit;
+  __R30 &= ~(0x1<<pin_8_11_bit);
   __delay_cycles(one_off-2);
 }
 
@@ -40,8 +46,8 @@ void debug(int num_blinks){
   int i;
   for(i = 0; i<num_blinks;i++){
     __R30 |= 0x1<<pin_8_12_bit;
-    __delay_cycles(500000000);
+    __delay_cycles(5000000);
     __R30 &= ~(0x1<<pin_8_12_bit);
-    __delay_cycles(500000000); 
+    __delay_cycles(5000000); 
   };
 }

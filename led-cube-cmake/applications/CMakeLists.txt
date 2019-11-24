@@ -1,0 +1,6 @@
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/applications)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/)
+
+
+add_subdirectory(led-testing)
+add_subdirectory(slice)
