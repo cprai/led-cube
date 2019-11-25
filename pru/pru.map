@@ -1,10 +1,10 @@
 ******************************************************************************
                      PRU Linker Unix v2.3.2                    
 ******************************************************************************
->> Linked Sat Nov 23 21:28:06 2019
+>> Linked Mon Nov 25 09:38:33 2019
 
 OUTPUT FILE NAME:   <led_pru.elf>
-ENTRY POINT SYMBOL: 0
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000000
 
 
 MEMORY CONFIGURATION
@@ -12,16 +12,17 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
 PAGE 0:
-  PRU_IMEM              00000000   00002000  00000000  00002000  RWIX
+  PRU_IMEM              00000000   00002000  000001a8  00001e58  RWIX
 
 PAGE 1:
-  PRU_DMEM_0_1          00000000   00002000  00000014  00001fec  RWIX
+  RUST_HOST             00000000   00000050  0000001c  00000034  RWIX
+  PRU_DMEM_0_1          00000050   00001950  00000100  00001850  RWIX
   PRU_DMEM_1_0          00002000   00002000  00000000  00002000  RWIX
 
 PAGE 2:
   PRU_SHAREDMEM         00010000   00003000  00000000  00003000  RWIX
-  PRU_INTC              00020000   00001504  00000000  00001504  RWIX
-  PRU_CFG               00026000   00000044  00000000  00000044  RWIX
+  PRU_INTC              00020000   00001504  00001504  00000000  RWIX
+  PRU_CFG               00026000   00000044  00000044  00000000  RWIX
   PRU_UART              00028000   00000038  00000000  00000038  RWIX
   PRU_IEP               0002e000   0000031c  00000000  0000031c  RWIX
   PRU_ECAP              00030000   00000060  00000000  00000060  RWIX
@@ -56,36 +57,91 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.cinit     1    00000000    00000000     UNINITIALIZED
+.text:_c_int00* 
+*          0    00000000    0000001c     
+                  00000000    0000001c     rtspruv3_le.lib : boot.c.obj (.text:_c_int00_noinit_noargs)
 
-.resource_table 
-*          1    00000000    00000014     
-                  00000000    00000014     led_pru.obj (.resource_table:retain)
+.text      0    0000001c    0000018c     
+                  0000001c    000000c8     led_pru.obj (.text:light_leds)
+                  000000e4    0000004c     led_pru.obj (.text:main)
+                  00000130    00000030     led_pru.obj (.text:send_zero)
+                  00000160    0000002c     led_pru.obj (.text:send_one)
+                  0000018c    0000000c     led_pru.obj (.text:wait_for_host_interrupt)
+                  00000198    00000008     rtspruv3_le.lib : exit.c.obj (.text:abort)
+                  000001a0    00000008                     : exit.c.obj (.text:loader_exit)
+
+.led_data 
+*          1    00000000    0000001c     UNINITIALIZED
+                  00000000    0000001c     led_pru.obj (.led_data:retain)
+
+.stack     1    00000050    00000100     UNINITIALIZED
+                  00000050    00000004     rtspruv3_le.lib : boot.c.obj (.stack)
+                  00000054    000000fc     --HOLE--
+
+.cinit     1    00000050    00000000     UNINITIALIZED
+
+.creg.PRU_INTC.noload.near 
+*          2    00020000    00000000     NOLOAD SECTION
+
+.creg.PRU_INTC.near 
+*          2    00020000    00000000     UNINITIALIZED
+
+.creg.PRU_INTC.noload.far 
+*          2    00020000    00001504     NOLOAD SECTION
+                  00020000    00001504     led_pru.obj (.creg.PRU_INTC.noload.far)
+
+.creg.PRU_INTC.far 
+*          2    00021504    00000000     UNINITIALIZED
+
+.creg.PRU_CFG.noload.near 
+*          2    00026000    00000044     NOLOAD SECTION
+                  00026000    00000044     led_pru.obj (.creg.PRU_CFG.noload.near)
+
+.creg.PRU_CFG.near 
+*          2    00026044    00000000     UNINITIALIZED
+
+.creg.PRU_CFG.noload.far 
+*          2    00026044    00000000     NOLOAD SECTION
+
+.creg.PRU_CFG.far 
+*          2    00026044    00000000     UNINITIALIZED
 
 MODULE SUMMARY
 
        Module         code   ro data   rw data
        ------         ----   -------   -------
     <current directory>
-       led_pru.obj    0      0         20     
+       led_pru.obj    380    0         5476   
     +--+--------------+------+---------+---------+
-       Total:         0      0         20     
+       Total:         380    0         5476   
                                               
+    /nix/store/b42nnr0n68a9hcrv502gl4l0d4k1h7xd-ti_cgt_pru/ti-cgt-pru_2.3.2/lib/rtspruv3_le.lib
+       boot.c.obj     28     0         0      
+       exit.c.obj     16     0         0      
     +--+--------------+------+---------+---------+
-       Grand Total:   0      0         20     
+       Total:         44     0         0      
+                                              
+       Stack:         0      0         256    
+    +--+--------------+------+---------+---------+
+       Grand Total:   424    0         5732   
 
 
 SEGMENT ATTRIBUTES
 
     id tag      seg value
     -- ---      --- -----
-     0 PHA_PAGE 0   1    
+     0 PHA_PAGE 1   1    
+     1 PHA_PAGE 2   1    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 page  address   name                         
 ----  -------   ----                         
+0     000001a0  C$$EXIT                      
+2     00026000  CT_CFG                       
+2     00020000  CT_INTC                      
+1     00000000  LEDS                         
 abs   481cc000  __PRU_CREG_BASE_DCAN0        
 abs   481d0000  __PRU_CREG_BASE_DCAN1        
 abs   80000000  __PRU_CREG_BASE_DDR          
@@ -100,7 +156,7 @@ abs   48030000  __PRU_CREG_BASE_MCSPI0
 abs   481a0000  __PRU_CREG_BASE_MCSPI1       
 abs   48060000  __PRU_CREG_BASE_MMCHS0       
 abs   00026000  __PRU_CREG_BASE_PRU_CFG      
-abs   00000000  __PRU_CREG_BASE_PRU_DMEM_0_1 
+abs   00000050  __PRU_CREG_BASE_PRU_DMEM_0_1 
 abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
 abs   00030000  __PRU_CREG_BASE_PRU_ECAP     
 abs   0002e000  __PRU_CREG_BASE_PRU_IEP      
@@ -150,16 +206,36 @@ abs   00000017  __PRU_CREG_SPINLOCK
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000000b  __PRU_CREG_UART1             
 abs   0000000c  __PRU_CREG_UART2             
+1     00000150  __TI_STACK_END               
+abs   00000100  __TI_STACK_SIZE              
 abs   ffffffff  __c_args__                   
-1     00000000  pru_remoteproc_ResourceTable 
+0     00000000  _c_int00_noinit_noargs       
+1     00000050  _stack                       
+0     00000198  abort                        
+0     0000001c  light_leds                   
+0     000000e4  main                         
+0     00000160  send_one                     
+0     00000130  send_zero                    
+0     0000018c  wait_for_host_interrupt      
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
 page  address   name                         
 ----  -------   ----                         
-1     00000000  pru_remoteproc_ResourceTable 
-abs   00000000  __PRU_CREG_BASE_PRU_DMEM_0_1 
+0     00000000  _c_int00_noinit_noargs       
+0     0000001c  light_leds                   
+0     000000e4  main                         
+0     00000130  send_zero                    
+0     00000160  send_one                     
+0     0000018c  wait_for_host_interrupt      
+0     00000198  abort                        
+0     000001a0  C$$EXIT                      
+1     00000000  LEDS                         
+1     00000050  _stack                       
+1     00000150  __TI_STACK_END               
+2     00020000  CT_INTC                      
+2     00026000  CT_CFG                       
 abs   00000000  __PRU_CREG_PRU_INTC          
 abs   00000001  __PRU_CREG_DMTIMER2          
 abs   00000002  __PRU_CREG_I2C1              
@@ -192,6 +268,8 @@ abs   0000001c  __PRU_CREG_PRU_SHAREDMEM
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000001e  __PRU_CREG_L3OCMC            
 abs   0000001f  __PRU_CREG_DDR               
+abs   00000050  __PRU_CREG_BASE_PRU_DMEM_0_1 
+abs   00000100  __TI_STACK_SIZE              
 abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
 abs   00010000  __PRU_CREG_BASE_PRU_SHAREDMEM
 abs   00020000  __PRU_CREG_BASE_PRU_INTC     
@@ -225,4 +303,4 @@ abs   4a100000  __PRU_CREG_BASE_GEMAC
 abs   80000000  __PRU_CREG_BASE_DDR          
 abs   ffffffff  __c_args__                   
 
-[66 symbols]
+[79 symbols]

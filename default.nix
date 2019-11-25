@@ -1,11 +1,11 @@
 with import <nixpkgs> {};
 let
-beaglebone_arm = import <old1903> { 
+beaglebone_arm = import <nixos> { 
     crossSystem = {
       system = "beaglebone";
       config = "arm-linux-gnueabihf";
       # platform = (import <old1903/lib>).systems.platforms.beaglebone;
-      platform = (import <old1903/lib>).systems.platforms.beaglebone;
+      platform = (import <nixos/lib>).systems.platforms.beaglebone;
     };
 };
 ti-clpru = pkgs.callPackage_i686 ./ti-clpru.nix {nixpkgs = pkgs;};

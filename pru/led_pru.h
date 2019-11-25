@@ -8,7 +8,7 @@
 #include <am335x/pru_cfg.h>
 #include <am335x/pru_intc.h>
 #include <am335x/pru_ctrl.h>
-#include "resource_table_empty.h"
+// #include "resource_table_empty.h"
 
 #define one_on     700/5   // Stay on 700ns
 #define one_off    800/5

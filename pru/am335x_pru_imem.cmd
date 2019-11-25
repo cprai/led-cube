@@ -7,19 +7,20 @@
 /*                 the resulting .out file on an AM335x device.             */
 /****************************************************************************/
 
-		/*-cr						 Link using C conventions */
+-cr								/* Link using C conventions */
 
 /* Specify the System Memory Map */
 MEMORY
 {
       PAGE 0:
-	PRU_IMEM		: org = 0x00000000 len = 0x00002000  /* 8kB PRU0 Instruction RAM */
+	PRU_IMEM (RWIX)		: org = 0x00000000 len = 0x00002000  /* 8kB PRU0 Instruction RAM */
 
       PAGE 1:
 
 	/* RAM */
 
-	PRU_DMEM_0_1	: org = 0x00000000 len = 0x00002000 CREGISTER=24 /* 8kB PRU Data RAM 0_1 */
+	RUST_HOST        : org = 0x00000000 len = 0x00000050 
+	PRU_DMEM_0_1	: org = 0x00000050 len = 0x00001950 CREGISTER=24 /* 8kB PRU Data RAM 0_1 */
 	PRU_DMEM_1_0	: org = 0x00002000 len = 0x00002000	CREGISTER=25 /* 8kB PRU Data RAM 1_0 */
 
 	  PAGE 2:
@@ -30,6 +31,8 @@ MEMORY
 
 
 	/* Peripherals */
+
+	
 
 	PRU_CFG			: org = 0x00026000 len = 0x00000044	CREGISTER=4
 	PRU_ECAP		: org = 0x00030000 len = 0x00000060	CREGISTER=3
@@ -70,6 +73,8 @@ SECTIONS {
 	.text:_c_int00*	>  0x0, PAGE 0
 
 	.text		>  PRU_IMEM, PAGE 0
+	.led_data   >  RUST_HOST, PAGE 1
+
 	.stack		>  PRU_DMEM_0_1, PAGE 1
 	.bss		>  PRU_DMEM_0_1, PAGE 1
 	.cio		>  PRU_DMEM_0_1, PAGE 1

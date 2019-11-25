@@ -1,0 +1,1 @@
+arm-linux-gnueabihf-g++   -Wall -O3 -fno-rtti   CMakeFiles/slice.dir/main.cpp.o  -o /home/misha/NFS/public/led-cube/slice/slice 

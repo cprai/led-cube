@@ -21,10 +21,10 @@ int main() {
             outputBuffer[i] = {r, g, b};
         }
 
-        std::cout << "Output buffer:" << std::endl;
-        for (int i = 0; i < N; i++) {
-            std::cout << "{" << outputBuffer[i].x << "," << outputBuffer[i].y << "," << outputBuffer[i].z << "}" << std::endl;
-        }
+        // std::cout << "Output buffer:" << std::endl;
+        // for (int i = 0; i < N; i++) {
+        //     std::cout << "{" << outputBuffer[i].x << "," << outputBuffer[i].y << "," << outputBuffer[i].z << "}" << std::endl;
+        // }
 
         displayer.display((displayer::Color*)outputBuffer);
         ++i;

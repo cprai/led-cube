@@ -13,7 +13,9 @@ template<int LEDCount>
 class Displayer {
 public:
     Displayer() {
-        pru_module = pru_module_new(LEDCount);
+        pruss = pruss_new();
+        // mem_segment = mem_segment_new(pruss);
+        pru_module = pru_module_new(pruss, LEDCount);
     }
 
     ~Displayer() {
@@ -21,24 +23,25 @@ public:
     }
 
     void display(Color outputBuffer[LEDCount]) {
-        std::cout << "Call to display module" << std::endl;
+        // std::cout << "Call to display module" << std::endl;
 
-        std::cout << "Recieved output buffer:" << std::endl;
+        // std::cout << "Recieved output buffer:" << std::endl;
 
         uint32_t interfaceBuffer[LEDCount];
         
         for (int i = 0; i < LEDCount; i++) {
             interfaceBuffer[i] = outputBuffer[i].asU32();
 
-            std::cout << std::hex << interfaceBuffer[i] << std::endl;
+            // std::cout << std::hex << interfaceBuffer[i] << std::endl;
         }
 
-        pru_module_update(pru_module, interfaceBuffer);
+        pru_module_update(pru_module,pruss,interfaceBuffer);
     }
 
 private:
     pru_module_t* pru_module;
-
+    pruss_t* pruss;
+    mem_segment_t* mem_segment;
 };
 
 

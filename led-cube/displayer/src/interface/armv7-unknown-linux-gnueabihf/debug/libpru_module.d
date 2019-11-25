@@ -1,0 +1,1 @@
+/home/misha/MyProjects/led-cube/led-cube/displayer/src/interface/armv7-unknown-linux-gnueabihf/debug/libpru_module.a: /home/misha/MyProjects/led-cube/led-cube-cmake/displayer/src/interface/src/pru_module.rs
