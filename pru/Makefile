@@ -1,4 +1,3 @@
-
 PRU_ASM = clpru
 PRU_HEX = hexpru
 ASM_FLAGS = --silicon_version=3
@@ -23,8 +22,6 @@ LFLAGS = --stack_size=$(STACK_SIZE) --heap_size=$(HEAP_SIZE)
 
 $(TARGET_DIR)/$(TARGET): $(ELF)
 	$(PRU_HEX) -b -o $@ $< --quiet
-	# $(PRU_HEX) -o $(TARGET_DIR)/$(TARGET) $(ELF) --quiet
-	# $(PRU_HEX) -b -o $(TARGET_DIR)/$(TARGET) $(ELF) --quiet
 
 $(ELF): $(OBJ)
 	$(PRU_ASM) $(LINKER) -m pru.map -o $@ $< 
@@ -36,7 +33,3 @@ $(OBJ): $(SOURCES)
 clean :
 	rm -r $(OBJ) $(ELF) 
 	# *.b10
-
-#
-# %.elf: %.obj $(LINKER_CMD)
-# 	$(PRU_ASM) $(LINKER_CMD) -o $@ $<

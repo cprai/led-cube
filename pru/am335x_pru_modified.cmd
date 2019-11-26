@@ -20,6 +20,7 @@ MEMORY
 	/* RAM */
 
 	RUST_HOST        : org = 0x00000000 len = 0x00000050 
+	
 	PRU_DMEM_0_1	: org = 0x00000050 len = 0x00001950 CREGISTER=24 /* 8kB PRU Data RAM 0_1 */
 	PRU_DMEM_1_0	: org = 0x00002000 len = 0x00002000	CREGISTER=25 /* 8kB PRU Data RAM 1_0 */
 

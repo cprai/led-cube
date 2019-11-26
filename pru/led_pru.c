@@ -22,18 +22,12 @@ volatile register uint32_t __R31;
 // #define PRU_DMEM0 far attribute((cregister("PRU_DMEM",  near)))
 
 #define LED_NUM 7
-
-#define PRU0_DRAM 0x00000000
-
 #define WAIT_BLINK_INTERVAL 4000000
 #define TEST_BLINK_INTERVAL 3000000
 
 #pragma DATA_SECTION(LEDS,".led_data")
 #pragma RETAIN(LEDS)
 
-
-
-// might need to correct the pointer
 volatile near uint32_t LEDS[LED_NUM];
 
 void light_leds(){

@@ -1,7 +1,7 @@
 ******************************************************************************
                      PRU Linker Unix v2.3.2                    
 ******************************************************************************
->> Linked Mon Nov 25 17:05:48 2019
+>> Linked Mon Nov 25 19:33:21 2019
 
 OUTPUT FILE NAME:   <led_pru.elf>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000000
@@ -115,7 +115,7 @@ MODULE SUMMARY
     +--+--------------+------+---------+---------+
        Total:         376    0         5476   
                                               
-    /nix/store/b42nnr0n68a9hcrv502gl4l0d4k1h7xd-ti_cgt_pru/ti-cgt-pru_2.3.2/lib/rtspruv3_le.lib
+    /nix/store/k4m9gcya6lj8v4y32pvpaizmhc70i87n-ti_cgt_pru/ti-cgt-pru_2.3.2/lib/rtspruv3_le.lib
        boot.c.obj     28     0         0      
        exit.c.obj     16     0         0      
     +--+--------------+------+---------+---------+
