@@ -23,16 +23,16 @@ public:
     }
 
     void display(Color outputBuffer[LEDCount]) {
-        // std::cout << "Call to display module" << std::endl;
+        std::cout << "Call to display module" << std::endl;
 
-        // std::cout << "Recieved output buffer:" << std::endl;
+        std::cout << "Recieved output buffer:" << std::endl;
 
         uint32_t interfaceBuffer[LEDCount];
         
         for (int i = 0; i < LEDCount; i++) {
             interfaceBuffer[i] = outputBuffer[i].asU32();
 
-            // std::cout << std::hex << interfaceBuffer[i] << std::endl;
+            std::cout << std::hex << interfaceBuffer[i] << std::endl;
         }
 
         pru_module_update(pru_module,pruss,interfaceBuffer);

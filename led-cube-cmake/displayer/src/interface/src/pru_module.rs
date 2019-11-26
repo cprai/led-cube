@@ -63,25 +63,25 @@ impl<'a> PruModule<'a>{
     fn update<'b>(&mut self,pruss:&'b mut Pruss<'b>,led_data: &[u32]){ 
         // print!("Calling update function \n");
         // thread::sleep(time::Duration::from_millis(1000));
+        println!("led_data_conents{:?}", led_data);
 
         let irq = (*pruss).intc.register_irq(Evtout::E0);
 
-        let mut led_data_copy:[u32;7] = [0x00000000;7];
-        let led_data1:[u32;7] = [0x0000001,0x00000020,0x00000300,0x00004000,0x00040000,0x00500000,0x00700000];
-        led_data_copy.clone_from_slice(led_data);
+        // let mut led_data_copy:[u32;7] = [0x00000000;7];
+        // let led_data1:[u32;7] = [0x0000001,0x00000001,0x00000001,0x00000000,0x00000000,0x00000000,0x00000000];
+        // led_data_copy.clone_from_slice(led_data);
         self.code.halt();
         // (*self.ref_data).clone_from_slice(&led_data_copy);
            
         for x in 0..7 {
-            self.ref_data[x]=led_data1[x];
+            let a = led_data[x];
+
+            self.ref_data[x]=a;
         }
 
-        println!("led_data_copy {:?}", led_data_copy);
-        println!("self ref data {:?}", *self.ref_data);   
-        
         // (*pruss).dram0.alloc(led_data_copy);
         // thread::sleep(time::Duration::from_millis(1000));
-
+         println!("ref data is: {:?}",(*self.ref_data));
         unsafe{self.code.run();}
         (*pruss).intc.send_sysevt(Sysevt::S18);
         irq.wait();
