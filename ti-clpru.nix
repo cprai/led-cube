@@ -41,10 +41,8 @@ pkgsi686Linux.stdenv.mkDerivation {
       ./$filename
       cp -r $TMP/ti-cgt-pru_2.3.2/ $out
       ls $out
-      echo MISHA MISHA MISHA
       '';
       /* fixupPhase = ''
       PATH=$PATH:$out/ti-cgt-pru_2.3.2/bin
-      echo MISHA MISHA MISHA
       ''; */
   }

@@ -22,13 +22,11 @@ volatile register uint32_t __R31;
 // #define PRU_DMEM0 far attribute((cregister("PRU_DMEM",  near)))
 
 #define LED_NUM 7
-#define OFFSET 0x200
 
 #define PRU0_DRAM 0x00000000
-#define PRU_SHARED_DRAM 0x00010000
 
 #define WAIT_BLINK_INTERVAL 4000000
-#define TEST_BLINK_INTERVAL 30000000
+#define TEST_BLINK_INTERVAL 3000000
 
 #pragma DATA_SECTION(LEDS,".led_data")
 #pragma RETAIN(LEDS)
@@ -37,7 +35,6 @@ volatile register uint32_t __R31;
 
 // might need to correct the pointer
 volatile near uint32_t LEDS[LED_NUM];
-volatile unsigned int *LEDS2 = (unsigned int*) (PRU_SHARED_DRAM);
 
 void light_leds(){
     int i, j;
@@ -58,10 +55,7 @@ void light_leds(){
 
 void wait_for_host_interrupt(){
     while((__R31 & (0x1<<30))==0){
-        // __R30 |= 0x1<<pin_8_12_bit;
-        // __delay_cycles(WAIT_BLINK_INTERVAL);
-        // __R30 &= ~(0x1<<pin_8_12_bit);
-        // __delay_cycles(WAIT_BLINK_INTERVAL); 
+
     }
 }
 
@@ -92,15 +86,6 @@ int main(void)
     // __delay_cycles(100000000);
     // __R30 &= ~(0x1<<pin_8_12_bit);
     // __delay_cycles(100000000);
-
-    // display led strip
-
-    light_leds();
-    // wait_for_host_interrupt();
-    // CT_INTC.SICR = 18;
-    // // test();
-    // // show_leds();
-    // __R31 |= 32 | 3;
 
     while(1){
         wait_for_host_interrupt();

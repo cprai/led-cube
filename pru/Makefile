@@ -4,7 +4,7 @@ PRU_HEX = hexpru
 ASM_FLAGS = --silicon_version=3
 
 # LINKER = -z am335x_PRU.cmd
-LINKER = -z am335x_pru_imem.cmd 
+LINKER = -z am335x_pru_modified.cmd 
 
 INSTALL_DIR = ..
 
@@ -34,7 +34,8 @@ $(OBJ): $(SOURCES)
 	$(PRU_ASM) $(ASM_FLAGS) -c $(SOURCES)
 
 clean :
-	rm -r $(OBJ) $(ELF) *.b10
+	rm -r $(OBJ) $(ELF) 
+	# *.b10
 
 #
 # %.elf: %.obj $(LINKER_CMD)
