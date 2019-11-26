@@ -17,7 +17,7 @@ using LED = std::tuple<Vector3, int>;
 
 public:
     LEDLayout(std::vector<Vector3> samplePoints, float binSize) : binSize(binSize) {
-        for (int index = 0; index < samplePoints.size(); index++) {
+        for (std::size_t index = 0; index < samplePoints.size(); index++) {
             Vector3 position = samplePoints[index];
             for (auto bin : getLocalBins(position)) {
                 layout[bin].push_back({position, index});
