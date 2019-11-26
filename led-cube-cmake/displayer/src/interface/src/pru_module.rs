@@ -8,12 +8,12 @@ const NUM_LEDS: usize = 7;
 
 pub struct PruModule<'a>{
     code:PruCode<'a>,
-    ref_data:&'a mut [u32;NUM_LEDS],
+    ref_to_pru_array:&'a mut [u32;NUM_LEDS],
 }
 
 impl<'a> PruModule<'a>{
     fn new<'b>(pruss: &'b mut Pruss<'b>) -> PruModule<'b>{
-        
+
         let mut pru_binary = File::open(PathBuf::from("./pru_binary.bin")).unwrap();
 
         let led_data:[u32;NUM_LEDS] = [0x00000000;NUM_LEDS];
@@ -23,7 +23,7 @@ impl<'a> PruModule<'a>{
         
         PruModule {
             code:code,
-            ref_data:ref_to_pru_array,
+            ref_to_pru_array:ref_to_pru_array,
         }
     }
 
@@ -31,7 +31,7 @@ impl<'a> PruModule<'a>{
         let irq = (*pruss).intc.register_irq(Evtout::E0);
 
         self.code.halt();
-        (*self.ref_data).clone_from_slice(led_data);
+        (*self.ref_to_pru_array).clone_from_slice(led_data);
         unsafe{self.code.run();}
 
         // wake up PRU
@@ -44,12 +44,11 @@ impl<'a> PruModule<'a>{
     }
 
     fn shutdown<'b>(&mut self,pruss:&'b mut Pruss<'b>){ 
-
         let led_data:[u32;NUM_LEDS] = [0x00000000;NUM_LEDS];
         let irq = (*pruss).intc.register_irq(Evtout::E0);
 
         self.code.halt();
-        (*self.ref_data).clone_from_slice(&led_data);
+        (*self.ref_to_pru_array).clone_from_slice(&led_data);
         unsafe{self.code.run();}
 
         (*pruss).intc.send_sysevt(Sysevt::S21);
