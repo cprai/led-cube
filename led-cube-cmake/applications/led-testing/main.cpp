@@ -10,63 +10,53 @@ int main() {
 
     renderer::Vector3 outputBuffer[N];
     int i = 0;
-    while (1) {
-        if (i > 10) {
-            i = 0;
-        }
-        float r = i * 0.1;
-        float g = 1;
-        float b = 0;
-        for (int i = 0; i < N; i += 2) {
-            outputBuffer[i] = {r, g, b};
-        }
+    while (i<4) {
+        // if (i > 10) {
+        //     i = 0;
+        // }
+
+        float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+        float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        outputBuffer[1] = {r, g, b};
+
+        r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+        g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        outputBuffer[2] = {r/8, g/8, b/8};
+
+        r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+         g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+         b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        outputBuffer[3] = {r/16, g/16, b/16};
 
 
-        // float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[0] = {r, g, b};
+        r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+        g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[1] = {r, g, b};
+        outputBuffer[4] = {r/32, g/32, b/32};
 
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[1] = {r, g, b}; 
+         r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+         g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+         b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        outputBuffer[5] = {r, g, b};
+
+        r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
+        g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        outputBuffer[6] = {r, g/32, b/32};
+
         
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);     
+        // for (int i = 0; i < N; i += 1) {
 
-        // outputBuffer[2] = {r, g, b}; 
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[3] = {r, g, b};
-
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[4] = {r, g, b};
-
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[4] = {r, g, b};
-
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[5] = {r, g, b};
-
-        // r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);        
-        // g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        // outputBuffer[6] = {r, g, b};
-
+            
+        // }
 
         // std::cout << "Output buffer:" << std::endl;
         // for (int i = 0; i < N; i++) {

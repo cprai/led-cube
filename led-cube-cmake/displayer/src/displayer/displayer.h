@@ -19,7 +19,7 @@ public:
     }
 
     ~Displayer() {
-        // pru_module_shutdown(pru_module);
+        pru_module_shutdown(pru_module,pruss);
     }
 
     void display(Color outputBuffer[LEDCount]) {

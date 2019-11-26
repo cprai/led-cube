@@ -13,7 +13,7 @@
 MEMORY
 {
       PAGE 0:
-	PRU_IMEM 		: org = 0x00000000 len = 0x00002000  /* 8kB PRU0 Instruction RAM */
+	PRU_IMEM 		: org = 0x00000000 len = 0x00002000  /* */
 
       PAGE 1:
 
@@ -74,6 +74,7 @@ SECTIONS {
 	.text:_c_int00*	>  0x0, PAGE 0
 
 	.text		>  PRU_IMEM, PAGE 0
+	
 	.led_data   >  RUST_HOST, PAGE 1
 
 	.stack		>  PRU_DMEM_0_1, PAGE 1

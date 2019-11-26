@@ -1,7 +1,7 @@
 ******************************************************************************
                      PRU Linker Unix v2.3.2                    
 ******************************************************************************
->> Linked Mon Nov 25 19:33:21 2019
+>> Linked Tue Nov 26 11:31:29 2019
 
 OUTPUT FILE NAME:   <led_pru.elf>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000000
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
 PAGE 0:
-  PRU_IMEM              00000000   00002000  000001a4  00001e5c  RWIX
+  PRU_IMEM              00000000   00002000  000001ac  00001e54  RWIX
 
 PAGE 1:
   RUST_HOST             00000000   00000050  0000001c  00000034  RWIX
@@ -61,14 +61,14 @@ section   page    origin      length       input sections
 *          0    00000000    0000001c     
                   00000000    0000001c     rtspruv3_le.lib : boot.c.obj (.text:_c_int00_noinit_noargs)
 
-.text      0    0000001c    00000188     
+.text      0    0000001c    00000190     
                   0000001c    000000c8     led_pru.obj (.text:light_leds)
-                  000000e4    00000048     led_pru.obj (.text:main)
-                  0000012c    00000030     led_pru.obj (.text:send_zero)
-                  0000015c    0000002c     led_pru.obj (.text:send_one)
-                  00000188    0000000c     led_pru.obj (.text:wait_for_host_interrupt)
-                  00000194    00000008     rtspruv3_le.lib : exit.c.obj (.text:abort)
-                  0000019c    00000008                     : exit.c.obj (.text:loader_exit)
+                  000000e4    00000050     led_pru.obj (.text:main)
+                  00000134    00000030     led_pru.obj (.text:send_zero)
+                  00000164    0000002c     led_pru.obj (.text:send_one)
+                  00000190    0000000c     led_pru.obj (.text:wait_for_host_interrupt)
+                  0000019c    00000008     rtspruv3_le.lib : exit.c.obj (.text:abort)
+                  000001a4    00000008                     : exit.c.obj (.text:loader_exit)
 
 .led_data 
 *          1    00000000    0000001c     UNINITIALIZED
@@ -111,9 +111,9 @@ MODULE SUMMARY
        Module         code   ro data   rw data
        ------         ----   -------   -------
     <current directory>
-       led_pru.obj    376    0         5476   
+       led_pru.obj    384    0         5476   
     +--+--------------+------+---------+---------+
-       Total:         376    0         5476   
+       Total:         384    0         5476   
                                               
     /nix/store/k4m9gcya6lj8v4y32pvpaizmhc70i87n-ti_cgt_pru/ti-cgt-pru_2.3.2/lib/rtspruv3_le.lib
        boot.c.obj     28     0         0      
@@ -123,7 +123,7 @@ MODULE SUMMARY
                                               
        Stack:         0      0         256    
     +--+--------------+------+---------+---------+
-       Grand Total:   420    0         5732   
+       Grand Total:   428    0         5732   
 
 
 SEGMENT ATTRIBUTES
@@ -138,7 +138,7 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 page  address   name                         
 ----  -------   ----                         
-0     0000019c  C$$EXIT                      
+0     000001a4  C$$EXIT                      
 2     00026000  CT_CFG                       
 2     00020000  CT_INTC                      
 1     00000000  LEDS                         
@@ -211,12 +211,12 @@ abs   00000100  __TI_STACK_SIZE
 abs   ffffffff  __c_args__                   
 0     00000000  _c_int00_noinit_noargs       
 1     00000050  _stack                       
-0     00000194  abort                        
+0     0000019c  abort                        
 0     0000001c  light_leds                   
 0     000000e4  main                         
-0     0000015c  send_one                     
-0     0000012c  send_zero                    
-0     00000188  wait_for_host_interrupt      
+0     00000164  send_one                     
+0     00000134  send_zero                    
+0     00000190  wait_for_host_interrupt      
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -226,11 +226,11 @@ page  address   name
 0     00000000  _c_int00_noinit_noargs       
 0     0000001c  light_leds                   
 0     000000e4  main                         
-0     0000012c  send_zero                    
-0     0000015c  send_one                     
-0     00000188  wait_for_host_interrupt      
-0     00000194  abort                        
-0     0000019c  C$$EXIT                      
+0     00000134  send_zero                    
+0     00000164  send_one                     
+0     00000190  wait_for_host_interrupt      
+0     0000019c  abort                        
+0     000001a4  C$$EXIT                      
 1     00000000  LEDS                         
 1     00000050  _stack                       
 1     00000150  __TI_STACK_END               

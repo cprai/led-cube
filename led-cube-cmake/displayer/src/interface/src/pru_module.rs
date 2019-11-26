@@ -1,10 +1,9 @@
 use libc;
-use libc::{c_uint};
+use libc::c_uint;
 use std::fs::File;
 use std::path::PathBuf;
 use std::slice;
 use::prusst::{Pruss,IntcConfig, Sysevt, Evtout, Host, PruCode,};
-
 use std::{thread, time};
 
 const NUM_LEDS: usize = 7;
@@ -34,19 +33,33 @@ impl<'a> PruModule<'a>{
 
     fn update<'b>(&mut self,pruss:&'b mut Pruss<'b>,led_data: &[u32]){ 
         let irq = (*pruss).intc.register_irq(Evtout::E0);
-
         self.code.halt();
         (*self.ref_data).clone_from_slice(led_data);
         unsafe{self.code.run();}
-
         // wake up pru; 
         (*pruss).intc.send_sysevt(Sysevt::S18);
         // wait for signal from pru 
         irq.wait();
         (*pruss).intc.clear_sysevt(Sysevt::S19);
         (*pruss).intc.enable_host(Host::Evtout0);
-
         thread::sleep(time::Duration::from_millis(1000));
+    }
+
+    fn shutdown<'b>(&mut self,pruss:&'b mut Pruss<'b>){ 
+
+        let led_data:[u32;NUM_LEDS] = [0x00000000;NUM_LEDS];
+        let irq = (*pruss).intc.register_irq(Evtout::E0);
+
+        self.code.halt();
+        (*self.ref_data).clone_from_slice(&led_data);
+        unsafe{self.code.run();}
+
+        (*pruss).intc.send_sysevt(Sysevt::S21);
+        print!("shutting down pru \n");
+        irq.wait();
+        print!("syset 21 recieved shutting down \n");
+        (*pruss).intc.clear_sysevt(Sysevt::S19);
+        (*pruss).intc.enable_host(Host::Evtout0);
     }
 }
 
@@ -71,9 +84,10 @@ pub extern "C" fn pru_module_update(ptr:*mut PruModule,pruss:*mut Pruss<'static>
     module.update(pruss,new_led_data);
 }
 
-// #[no_mangle]
-// pub extern "C" fn pru_module_shutdown(ptr: *mut PruModule){
-//     // let module = unsafe{ &*ptr};
-//     // module.shutdown();
-//     // unsafe{Box::from_raw(ptr);}
-// }
+#[no_mangle]
+pub extern "C" fn pru_module_shutdown(ptr:*mut PruModule,pruss: *mut Pruss<'static>){
+    let module = unsafe{ &mut *ptr};
+    let pruss = unsafe{&mut *pruss};
+    module.shutdown(pruss);
+    unsafe{Box::from_raw(ptr);}
+}

@@ -47,10 +47,20 @@ void light_leds(){
     __delay_cycles(reset); 
 }
 
-void wait_for_host_interrupt(){
-    while((__R31 & (0x1<<30))==0){
-
+void off(){
+    int i, j;
+    for(j=0;j<LED_NUM;j++){
+        for(i=23; i>=0; i--) {
+            send_zero();
+        }
+        
     }
+    __R30 &= ~(0x1 << pin_8_11_bit); 
+    __delay_cycles(reset); 
+}
+
+void wait_for_host_interrupt(){
+    while((__R31 & (0x1<<30))==0){}
 }
 
 void test(){
@@ -58,15 +68,15 @@ void test(){
     for(j=0;j<LED_NUM;j++){
         if(LEDS[j]==0){
             __R30 |= 0x1<<pin_8_11_bit;
-            __delay_cycles(TEST_BLINK_INTERVAL);
+            __delay_cycles(4000000);
             __R30 &= ~(0x1<<pin_8_11_bit);
-            __delay_cycles(TEST_BLINK_INTERVAL); 
+            __delay_cycles(4000000); 
         }
         else{
             __R30 |= 0x1<<pin_8_12_bit;
-            __delay_cycles(TEST_BLINK_INTERVAL);
+            __delay_cycles(4000000);
             __R30 &= ~(0x1<<pin_8_12_bit);
-            __delay_cycles(TEST_BLINK_INTERVAL); 
+            __delay_cycles(4000000); 
         }
     }
 }
@@ -80,15 +90,21 @@ int main(void)
     // __delay_cycles(100000000);
     // __R30 &= ~(0x1<<pin_8_12_bit);
     // __delay_cycles(100000000);
+    // CT_INTC.SICR = 18;
 
     while(1){
         wait_for_host_interrupt();
-        CT_INTC.SICR = 18;
-        __delay_cycles(TEST_BLINK_INTERVAL); 
-        light_leds();
-        __delay_cycles(TEST_BLINK_INTERVAL); 
-        // test();
-        __R31 |= 32 | 3;
+        if((CT_INTC.SECR0 & (1 << 21)) != 0){
+            light_leds();
+            __R31 |= 32 | 3;
+            break;
+        }
+        else{
+            CT_INTC.SICR = 18;
+            light_leds();
+            // test();
+            __R31 |= 32 | 3;
+        }
     }
     __halt();
 }
