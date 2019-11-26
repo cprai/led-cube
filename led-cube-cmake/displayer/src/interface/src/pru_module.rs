@@ -1,5 +1,3 @@
-use libc;
-use libc::c_uint;
 use std::fs::File;
 use std::path::PathBuf;
 use std::slice;
@@ -13,11 +11,9 @@ pub struct PruModule<'a>{
     ref_data:&'a mut [u32;NUM_LEDS],
 }
 
-
 impl<'a> PruModule<'a>{
     fn new<'b>(pruss: &'b mut Pruss<'b>) -> PruModule<'b>{
-
-        println!("reading pru binary file\n");
+        
         let mut pru_binary = File::open(PathBuf::from("./pru_binary.bin")).unwrap();
 
         let led_data:[u32;NUM_LEDS] = [0x00000000;NUM_LEDS];
@@ -33,12 +29,14 @@ impl<'a> PruModule<'a>{
 
     fn update<'b>(&mut self,pruss:&'b mut Pruss<'b>,led_data: &[u32]){ 
         let irq = (*pruss).intc.register_irq(Evtout::E0);
+
         self.code.halt();
         (*self.ref_data).clone_from_slice(led_data);
         unsafe{self.code.run();}
-        // wake up pru; 
+
+        // wake up PRU
         (*pruss).intc.send_sysevt(Sysevt::S18);
-        // wait for signal from pru 
+        // wait for completion signal from PRU 
         irq.wait();
         (*pruss).intc.clear_sysevt(Sysevt::S19);
         (*pruss).intc.enable_host(Host::Evtout0);
@@ -55,20 +53,16 @@ impl<'a> PruModule<'a>{
         unsafe{self.code.run();}
 
         (*pruss).intc.send_sysevt(Sysevt::S21);
-        print!("shutting down pru \n");
         irq.wait();
-        print!("syset 21 recieved shutting down \n");
         (*pruss).intc.clear_sysevt(Sysevt::S19);
         (*pruss).intc.enable_host(Host::Evtout0);
     }
 }
 
-
 #[no_mangle]
 pub extern "C" fn pruss_new() -> *mut Pruss<'static>{
     Box::into_raw(Box::new(Pruss::new(&IntcConfig::new_populated()).unwrap()))
 }
-
 
 #[no_mangle]
 pub extern "C" fn pru_module_new(pruss:*mut Pruss<'static>) -> *mut PruModule<'static>{
@@ -77,17 +71,17 @@ pub extern "C" fn pru_module_new(pruss:*mut Pruss<'static>) -> *mut PruModule<'s
 }
 
 #[no_mangle]
-pub extern "C" fn pru_module_update(ptr:*mut PruModule,pruss:*mut Pruss<'static>,new_data: *const u32 ){
+pub extern "C" fn pru_module_update(pru_module:*mut PruModule,pruss:*mut Pruss<'static>,new_data: *const u32 ){
     let pruss = unsafe{&mut *pruss};
-    let module = unsafe{ &mut *ptr};
+    let module = unsafe{&mut *pru_module};
     let new_led_data: &[u32] = unsafe{slice::from_raw_parts(new_data, NUM_LEDS)};
     module.update(pruss,new_led_data);
 }
 
 #[no_mangle]
-pub extern "C" fn pru_module_shutdown(ptr:*mut PruModule,pruss: *mut Pruss<'static>){
-    let module = unsafe{ &mut *ptr};
+pub extern "C" fn pru_module_shutdown(pru_module:*mut PruModule,pruss: *mut Pruss<'static>){
+    let module = unsafe{&mut *pru_module};
     let pruss = unsafe{&mut *pruss};
     module.shutdown(pruss);
-    unsafe{Box::from_raw(ptr);}
+    unsafe{Box::from_raw(pru_module);}
 }

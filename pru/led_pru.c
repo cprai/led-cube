@@ -1,3 +1,6 @@
+// LED timings and LED code is based on PRU Cookbook.
+// https://markayoder.github.io/PRUCookbook/05blocks/blocks.html
+
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -47,18 +50,6 @@ void light_leds(){
     __delay_cycles(reset); 
 }
 
-void off(){
-    int i, j;
-    for(j=0;j<LED_NUM;j++){
-        for(i=23; i>=0; i--) {
-            send_zero();
-        }
-        
-    }
-    __R30 &= ~(0x1 << pin_8_11_bit); 
-    __delay_cycles(reset); 
-}
-
 void wait_for_host_interrupt(){
     while((__R31 & (0x1<<30))==0){}
 }
@@ -85,13 +76,6 @@ int main(void)
 {
     CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
 
-    // flash green led at the beginning
-    // __R30 |= 0x1<<pin_8_12_bit;
-    // __delay_cycles(100000000);
-    // __R30 &= ~(0x1<<pin_8_12_bit);
-    // __delay_cycles(100000000);
-    // CT_INTC.SICR = 18;
-
     while(1){
         wait_for_host_interrupt();
         if((CT_INTC.SECR0 & (1 << 21)) != 0){
@@ -102,7 +86,6 @@ int main(void)
         else{
             CT_INTC.SICR = 18;
             light_leds();
-            // test();
             __R31 |= 32 | 3;
         }
     }
