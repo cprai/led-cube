@@ -82,5 +82,6 @@ pub extern "C" fn pru_module_shutdown(pru_module:*mut PruModule,pruss: *mut Prus
     let module = unsafe{&mut *pru_module};
     let pruss = unsafe{&mut *pruss};
     module.shutdown(pruss);
+    unsafe{Box::from_raw(pruss;)}
     unsafe{Box::from_raw(pru_module);}
 }
