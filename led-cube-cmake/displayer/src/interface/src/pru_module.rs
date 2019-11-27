@@ -78,10 +78,10 @@ pub extern "C" fn pru_module_update(pru_module:*mut PruModule,pruss:*mut Pruss<'
 }
 
 #[no_mangle]
-pub extern "C" fn pru_module_shutdown(pru_module:*mut PruModule,pruss: *mut Pruss<'static>){
+pub extern "C" fn pru_module_shutdown(pru_module:*mut PruModule,pruss: *mut Pruss){
     let module = unsafe{&mut *pru_module};
+    module.shutdown(unsafe{&mut *pruss});
     let pruss = unsafe{&mut *pruss};
-    module.shutdown(pruss);
-    unsafe{Box::from_raw(pruss;)}
     unsafe{Box::from_raw(pru_module);}
+    unsafe{Box::from_raw(pruss);}
 }
