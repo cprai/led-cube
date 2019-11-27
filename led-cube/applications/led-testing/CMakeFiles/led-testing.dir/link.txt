@@ -1,1 +1,0 @@
-arm-linux-gnueabihf-g++   -Wall -O3 -fno-rtti   CMakeFiles/led-testing.dir/main.cpp.o  -o /home/misha/NFS/public/led-cube/led-testing ../../displayer/src/interface/armv7-unknown-linux-gnueabihf/debug/libpru_module.a -lpthread -ldl 
