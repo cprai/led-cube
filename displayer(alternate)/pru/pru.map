@@ -1,7 +1,7 @@
 ******************************************************************************
                      PRU Linker Unix v2.3.2                    
 ******************************************************************************
->> Linked Tue Nov 26 14:26:42 2019
+>> Linked Wed Nov 27 18:21:12 2019
 
 OUTPUT FILE NAME:   <led_pru.elf>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000000
@@ -15,8 +15,8 @@ PAGE 0:
   PRU_IMEM              00000000   00002000  000001ac  00001e54  RWIX
 
 PAGE 1:
-  RUST_HOST             00000000   00000050  0000001c  00000034  RWIX
-  PRU_DMEM_0_1          00000050   00001950  00000100  00001850  RWIX
+  RUST_HOST             00000000   000004b0  0000001c  00000494  RWIX
+  PRU_DMEM_0_1          000004b0   00001950  00000100  00001850  RWIX
   PRU_DMEM_1_0          00002000   00002000  00000000  00002000  RWIX
 
 PAGE 2:
@@ -74,11 +74,11 @@ section   page    origin      length       input sections
 *          1    00000000    0000001c     UNINITIALIZED
                   00000000    0000001c     led_pru.obj (.led_data:retain)
 
-.stack     1    00000050    00000100     UNINITIALIZED
-                  00000050    00000004     rtspruv3_le.lib : boot.c.obj (.stack)
-                  00000054    000000fc     --HOLE--
+.stack     1    000004b0    00000100     UNINITIALIZED
+                  000004b0    00000004     rtspruv3_le.lib : boot.c.obj (.stack)
+                  000004b4    000000fc     --HOLE--
 
-.cinit     1    00000050    00000000     UNINITIALIZED
+.cinit     1    000004b0    00000000     UNINITIALIZED
 
 .creg.PRU_INTC.noload.near 
 *          2    00020000    00000000     NOLOAD SECTION
@@ -156,7 +156,7 @@ abs   48030000  __PRU_CREG_BASE_MCSPI0
 abs   481a0000  __PRU_CREG_BASE_MCSPI1       
 abs   48060000  __PRU_CREG_BASE_MMCHS0       
 abs   00026000  __PRU_CREG_BASE_PRU_CFG      
-abs   00000050  __PRU_CREG_BASE_PRU_DMEM_0_1 
+abs   000004b0  __PRU_CREG_BASE_PRU_DMEM_0_1 
 abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
 abs   00030000  __PRU_CREG_BASE_PRU_ECAP     
 abs   0002e000  __PRU_CREG_BASE_PRU_IEP      
@@ -206,11 +206,11 @@ abs   00000017  __PRU_CREG_SPINLOCK
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000000b  __PRU_CREG_UART1             
 abs   0000000c  __PRU_CREG_UART2             
-1     00000150  __TI_STACK_END               
+1     000005b0  __TI_STACK_END               
 abs   00000100  __TI_STACK_SIZE              
 abs   ffffffff  __c_args__                   
 0     00000000  _c_int00_noinit_noargs       
-1     00000050  _stack                       
+1     000004b0  _stack                       
 0     0000019c  abort                        
 0     0000001c  light_leds                   
 0     000000e4  main                         
@@ -232,8 +232,8 @@ page  address   name
 0     0000019c  abort                        
 0     000001a4  C$$EXIT                      
 1     00000000  LEDS                         
-1     00000050  _stack                       
-1     00000150  __TI_STACK_END               
+1     000004b0  _stack                       
+1     000005b0  __TI_STACK_END               
 2     00020000  CT_INTC                      
 2     00026000  CT_CFG                       
 abs   00000000  __PRU_CREG_PRU_INTC          
@@ -268,8 +268,8 @@ abs   0000001c  __PRU_CREG_PRU_SHAREDMEM
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000001e  __PRU_CREG_L3OCMC            
 abs   0000001f  __PRU_CREG_DDR               
-abs   00000050  __PRU_CREG_BASE_PRU_DMEM_0_1 
 abs   00000100  __TI_STACK_SIZE              
+abs   000004b0  __PRU_CREG_BASE_PRU_DMEM_0_1 
 abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
 abs   00010000  __PRU_CREG_BASE_PRU_SHAREDMEM
 abs   00020000  __PRU_CREG_BASE_PRU_INTC     

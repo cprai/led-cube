@@ -4,7 +4,9 @@ use std::slice;
 use::prusst::{Pruss,IntcConfig, Sysevt, Evtout, Host, PruCode,};
 use std::{thread, time};
 
-const NUM_LEDS: usize = 7;
+
+// for testing pruposes; 
+const NUM_LEDS: usize = 300;
 
 pub struct PruModule<'a>{
     code:PruCode<'a>,
