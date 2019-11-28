@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/686353/random-float-number-generation
+
 #include <iostream>
 
 #include "geometry/vector3.h"
