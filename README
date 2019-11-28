@@ -1,1 +1,4 @@
 LED cube project
+
+1. Clone and follow the setup instructions on debian 7.11 as per https://github.com/Yona-Appletree/LEDscape#installation. This will install required DTOs and pru driver.
+2. Change into the `demo` directory and execute `./demo`.
